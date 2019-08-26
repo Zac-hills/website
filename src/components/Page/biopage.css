@@ -1,0 +1,11 @@
+.contentfield {
+  text-align: center;
+  margin: 0 25%;
+  font-size: larger;
+}
+
+.profilepicture {
+  border-radius: 50%;
+  object-fit: none;
+  object-position: 55% 20%;
+}

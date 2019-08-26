@@ -1,0 +1,12 @@
+.header-button {
+  color: #fff;
+  background: #111;
+  margin: 0 9%;
+  outline: 0;
+  border: none;
+  font-size: larger;
+}
+
+.header-button:hover {
+  color: #099;
+}
