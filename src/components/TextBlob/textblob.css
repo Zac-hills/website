@@ -1,0 +1,7 @@
+.blob{
+    clip-path: polygon();
+}
+
+.textbox{
+    background-color: linear-gradient(--foreground-color1, --foreground-color2);
+}
