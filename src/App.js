@@ -7,7 +7,6 @@ import BioPage from "./components/Page/BioPage";
 function App() {
   return (
     <div className="App">
-      <Header />
       <BioPage />
     </div>
   );
