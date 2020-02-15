@@ -1,8 +1,8 @@
-:root{
+:root {
   --header-color: rgba(0, 0, 0, 1);
   --text-color: rgba(255, 255, 255, 1);
-  --background-color : rgba(73, 73, 73, 1);
-  --foreground-color1: rgba(124, 122, 122, 1);
+  --background-color: rgba(73, 73, 73, 1);
+  --foreground-color1: #7c7a7a;
   --foreground-color2: rgba(255, 93, 115, 1);
 }
 

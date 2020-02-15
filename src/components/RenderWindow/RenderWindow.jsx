@@ -2,46 +2,31 @@ import * as PIXI from "pixi.js";
 import React, { Component } from "react";
 
 class RenderWindow extends Component {
-  state = {};
+  state = { pixi_cnt: null, app: null };
   constructor(props) {
     super(props);
-    this.pixi_cnt = null;
-    this.app = new PIXI.Application({
+    this.state.app = new PIXI.Application({
       width: window.outerWidth,
       height: window.innerHeight,
       transparent: false
     });
   }
-  updatePixiCnt = element => {
+  updatePixi = element => {
     // the element is the DOM object that we will use as container to add pixi stage(canvas)
-    this.pixi_cnt = element;
+    this.state.pixi_cnt = element;
     //now we are adding the application to the DOM element which we got from the Ref.
-    if (this.pixi_cnt && this.pixi_cnt.children.length <= 0) {
-      this.pixi_cnt.appendChild(this.app.view);
+    if (this.state.pixi_cnt && this.state.pixi_cnt.children.length <= 0) {
+      this.state.pixi_cnt.appendChild(this.state.app.view);
       new TextParticle(
         "Zachary Hills \n \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tFull Stack Developer",
-        this.app
+        this.state.app
       );
     }
   };
 
   render() {
-    return <div ref={this.updatePixiCnt}></div>;
+    return <div ref={this.updatePixi}></div>;
   }
-}
-
-class Renderer {
-  app = null;
-  constructor() {
-    this.app = new PIXI.Application({ antialias: true });
-  }
-  init() {}
-  update(element) {
-    if (element && !element.children) {
-      element.appendChild(this.app.view);
-    }
-  }
-  destroy() {}
 }
 
 class TextParticle {
@@ -68,7 +53,7 @@ class TextParticle {
     fontWeight: "bold",
     fontSize: 60,
     fontFamily: "Arial",
-    fill: "#ffffff",
+    fill: "#f0f0f0",
     align: "center"
   };
   particles = [];
@@ -111,46 +96,54 @@ class TextParticle {
       position: true,
       rotation: false,
       uvs: false,
-      alpha: false
+      alpha: false,
+      tint: true
     });
-
-    let dir = [];
+    let self = this;
     app.stage.addChild(sprites);
     // Set the fill color
     for (let i = 0; i < this.coords.length; ++i) {
       // Draw a circle
-      let temp = PIXI.Sprite.from(PIXI.Texture.WHITE);
+      let temp = new PixelSprite(PIXI.Texture.WHITE);
+      temp.tint = 0xf0f0f0;
       temp.x = this.coords[i].x;
       temp.y = this.coords[i].y;
-      temp.scale.x = 0.07;
-      temp.scale.y = 0.07;
+      temp.width = 1;
+      temp.height = 1;
       const random = function() {
         return -1 + Math.random() * 2;
       };
-      dir.push({
-        x: Math.random() * random(),
-        y: Math.random() * random(),
-        origin: { x: temp.x, y: temp.y }
-      });
+      temp.direction.x = Math.random() * random();
+      temp.direction.y = Math.random() * random();
+      temp.origin.x = this.coords[i].x;
+      temp.origin.y = this.coords[i].y;
 
       sprites.addChild(temp);
     }
     let noiseTimer = 0.8;
     let intensity = 50.0;
-    let innerForce = 0.5;
+    const changeColor = function(delta) {
+      for (let i = 0; i < sprites.children.length; ++i) {
+        sprites.children[i].tint = Math.floor(
+          sprites.children[i].x + sprites.children[i].y
+        );
+      }
+    };
     const implode = function(delta) {
       noiseTimer = Math.max(0.0, noiseTimer - app.ticker.deltaMS / 1000);
       if (noiseTimer == 0.0) {
-        for (let i = 0; i < sprites.children.length; ++i) {
-          sprites.children[i].x = dir[i].origin.x;
-          sprites.children[i].y = dir[i].origin.y;
-        }
         app.ticker.remove(implode);
+        for (let i = 0; i < sprites.children.length; ++i) {
+          sprites.children[i].x = sprites.children[i].origin.x;
+          sprites.children[i].y = sprites.children[i].origin.y;
+        }
         return;
       }
       for (let i = 0; i < sprites.children.length; ++i) {
-        sprites.children[i].x += intensity * -dir[i].x * delta;
-        sprites.children[i].y += intensity * -dir[i].y * delta;
+        sprites.children[i].x +=
+          intensity * -sprites.children[i].direction.x * delta;
+        sprites.children[i].y +=
+          intensity * -sprites.children[i].direction.y * delta;
       }
     };
     const explode = function(delta) {
@@ -161,15 +154,28 @@ class TextParticle {
         noiseTimer = 0.8;
       }
       for (let i = 0; i < sprites.children.length; ++i) {
-        sprites.children[i].x += intensity * dir[i].x * delta;
-        sprites.children[i].y += intensity * dir[i].y * delta;
+        sprites.children[i].x +=
+          intensity * sprites.children[i].direction.x * delta;
+        sprites.children[i].y +=
+          intensity * sprites.children[i].direction.y * delta;
       }
     };
     app.ticker.add(explode);
+    app.ticker.add(changeColor);
   }
 }
 
 class PixelSprite extends PIXI.Sprite {
+  constructor(texture) {
+    super(texture);
+    this.on("mouseover", this.hover.bind(this));
+  }
   direction = { x: 0, y: 0 };
+  origin = { x: 0, y: 0 };
+
+  hover(mouseData) {
+    console.log(mouseData);
+    const displacement = 30;
+  }
 }
 export default RenderWindow;
