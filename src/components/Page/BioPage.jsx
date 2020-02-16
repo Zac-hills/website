@@ -3,6 +3,7 @@ import Footer from "../Footer/Footer";
 import "./biopage.css";
 import TextBlob from "../TextBlob/TextBlob";
 import RenderWindow from "../RenderWindow/RenderWindow";
+import ProjectPage from "./ProjectPage";
 
 class BioPage extends Component {
   state = {};
@@ -11,6 +12,7 @@ class BioPage extends Component {
       <article className="contentfield">
         <RenderWindow />
         <Footer />
+        <ProjectPage />
       </article>
     );
   }

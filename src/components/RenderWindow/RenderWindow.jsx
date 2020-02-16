@@ -7,7 +7,7 @@ class RenderWindow extends Component {
     super(props);
     this.state.app = new PIXI.Application({
       width: window.outerWidth,
-      height: window.innerHeight,
+      height: window.innerHeight - 100,
       transparent: false
     });
   }
@@ -99,6 +99,8 @@ class TextParticle {
       alpha: false,
       tint: true
     });
+    sprites.interactive=true;
+    sprites.interactiveChildren = true;
     let self = this;
     app.stage.addChild(sprites);
     // Set the fill color
@@ -168,13 +170,17 @@ class TextParticle {
 class PixelSprite extends PIXI.Sprite {
   constructor(texture) {
     super(texture);
-    this.on("mouseover", this.hover.bind(this));
+    this.interactive=true;
+    this.hitArea = this.getBounds();
+    this.on("mouseover", function(event){console.log("mouseData");});
   }
   direction = { x: 0, y: 0 };
   origin = { x: 0, y: 0 };
+  animationTimer=3;
 
-  hover(mouseData) {
-    console.log(mouseData);
+  hover(event) {
+    console.log("mouseData");
+    console.log(event);
     const displacement = 30;
   }
 }
