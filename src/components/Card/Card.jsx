@@ -17,13 +17,13 @@ class Card extends React.Component {
     xDiff /= this.state.size.width / 2;
     yDiff /= this.state.size.height / 2;
     this.setState({
-      transform: `rotateY(${-Math.floor(xDiff * maxSkew)}deg) rotateX(${Math.floor(
-        yDiff * maxSkew
-      )}deg)`
+      transform: `rotateY(${-Math.floor(
+        xDiff * maxSkew
+      )}deg) rotateX(${Math.floor(yDiff * maxSkew)}deg)`
     });
   }
-  mouseleave(e){
-    this.setState({transform:"rotateY(0deg) rotateX(0deg)"});
+  mouseleave(e) {
+    this.setState({ transform: "rotateY(0deg) rotateX(0deg)" });
   }
   onClick() {
     if (this.props.url != null) {
@@ -45,8 +45,7 @@ class Card extends React.Component {
     return (
       <div
         onClick={this.onClick.bind(this)}
-        onMouseMove={this.mousemove.bind(this)}
-        onMouseLeave = {this.mouseleave.bind(this)}
+        onMouseLeave={this.mouseleave.bind(this)}
         ref={this.getSize.bind(this)}
         className="card"
         style={{

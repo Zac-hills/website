@@ -1,5 +1,6 @@
 import * as PIXI from "pixi.js";
 import React, { Component } from "react";
+import Footer from "../Footer/Footer";
 
 class RenderWindow extends Component {
   state = { pixi_cnt: null, app: null };
@@ -25,7 +26,15 @@ class RenderWindow extends Component {
   };
 
   render() {
-    return <div ref={this.updatePixi}></div>;
+    return (
+      <div>
+        <div
+          style={{ height: window.innerHeight - 100 }}
+          ref={this.updatePixi}
+        ></div>
+        <Footer />
+      </div>
+    );
   }
 }
 
@@ -99,7 +108,7 @@ class TextParticle {
       alpha: false,
       tint: true
     });
-    sprites.interactive=true;
+    sprites.interactive = true;
     sprites.interactiveChildren = true;
     let self = this;
     app.stage.addChild(sprites);
@@ -170,13 +179,15 @@ class TextParticle {
 class PixelSprite extends PIXI.Sprite {
   constructor(texture) {
     super(texture);
-    this.interactive=true;
+    this.interactive = true;
     this.hitArea = this.getBounds();
-    this.on("mouseover", function(event){console.log("mouseData");});
+    this.on("mouseover", function(event) {
+      console.log("mouseData");
+    });
   }
   direction = { x: 0, y: 0 };
   origin = { x: 0, y: 0 };
-  animationTimer=3;
+  animationTimer = 3;
 
   hover(event) {
     console.log("mouseData");

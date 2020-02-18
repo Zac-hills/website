@@ -11,7 +11,6 @@ class BioPage extends Component {
     return (
       <article className="contentfield">
         <RenderWindow />
-        <Footer />
         <ProjectPage />
       </article>
     );

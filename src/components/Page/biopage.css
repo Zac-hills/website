@@ -1,7 +1,9 @@
 .contentfield {
+  height: 100%;
+  width: 100%;
+  position: relative;
   text-align: center;
   font-size: larger;
-  position: relative;
   background-color: var(--text-color);
   overflow-x: hidden;
   overflow-y: hidden;

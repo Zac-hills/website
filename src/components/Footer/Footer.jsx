@@ -9,7 +9,16 @@ class Footer extends Component {
         <div style={{ display: "inline-block", width: "50%", height: "100%" }}>
           <button className="footer-button">HOME</button>
           <button className="footer-button">BIO</button>
-          <button className="footer-button">PROJECTS</button>
+          <button
+            className="footer-button"
+            onClick={function() {
+              document
+                .getElementById("projects")
+                .scrollIntoView({ behavior: "smooth" });
+            }}
+          >
+            PROJECTS
+          </button>
           <button className="footer-button">CONTACT</button>
         </div>
         <div style={{ display: "inline-block", width: "50%", height: "100%" }}>
