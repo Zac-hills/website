@@ -2,8 +2,6 @@
   text-align: center;
   font-size: larger;
   position: relative;
-  min-height: 100vh;
-  min-width: 100%;
   background-color: var(--text-color);
   overflow-x: hidden;
   overflow-y: hidden;

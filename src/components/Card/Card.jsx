@@ -4,23 +4,26 @@ import "./Card.css";
 class Card extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { transform: "skew(0deg,0deg)" };
+    this.state = { transform: "" };
   }
 
-  onHover(e) {
+  mousemove(e) {
     console.log(e);
-    const maxSkew = 5;
+    const maxSkew = 15;
     let x = this.state.size.x + this.state.size.width / 2;
     let y = this.state.size.y + this.state.size.height / 2;
-    let xDiff = x - e.screenX;
-    let yDiff = y - e.screenY;
+    let xDiff = x - e.clientX;
+    let yDiff = y - e.clientY;
     xDiff /= this.state.size.width / 2;
     yDiff /= this.state.size.height / 2;
     this.setState({
-      transform: `skew(${Math.floor(xDiff * maxSkew)}deg,${Math.floor(
+      transform: `rotateY(${-Math.floor(xDiff * maxSkew)}deg) rotateX(${Math.floor(
         yDiff * maxSkew
       )}deg)`
     });
+  }
+  mouseleave(e){
+    this.setState({transform:"rotateY(0deg) rotateX(0deg)"});
   }
   onClick() {
     if (this.props.url != null) {
@@ -42,7 +45,8 @@ class Card extends React.Component {
     return (
       <div
         onClick={this.onClick.bind(this)}
-        onMouseMove={this.onHover.bind(this)}
+        onMouseMove={this.mousemove.bind(this)}
+        onMouseLeave = {this.mouseleave.bind(this)}
         ref={this.getSize.bind(this)}
         className="card"
         style={{
@@ -52,7 +56,7 @@ class Card extends React.Component {
         }}
       >
         <div style={{ width: "100%", height: "80%", display: "block" }}>
-          <img src={this.props.src}></img>
+          <img src={this.props.src} width="100%" height="100%"></img>
         </div>
         <div style={{ width: "100%", height: "19%", display: "block" }}>
           <p
