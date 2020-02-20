@@ -57,11 +57,12 @@ class Card extends React.Component {
         <div style={{ width: "100%", height: "80%", display: "block" }}>
           <img src={this.props.src} width="100%" height="100%"></img>
         </div>
-        <div style={{ width: "100%", height: "19%", display: "block" }}>
+        <div style={{ borderBottomLeftRadius:'15px', borderBottomRightRadius:'15px', width: "100%", height: "19%", display: "block", backgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--background-color') }}>
           <p
             style={{
               fontFamily: this.props.fontFamily,
-              fontSize: this.props.fontSize
+              fontSize: this.props.fontSize,
+              color: getComputedStyle(document.documentElement).getPropertyValue('--text-color')
             }}
           >
             {this.props.text}

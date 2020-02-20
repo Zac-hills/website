@@ -129,51 +129,18 @@ class TextParticle {
       temp.direction.y = Math.random() * random();
       temp.origin.x = this.coords[i].x;
       temp.origin.y = this.coords[i].y;
+      temp.waitTimer = (temp.origin.x / window.innerWidth) * temp.animationTimer;
 
       sprites.addChild(temp);
     }
-    let noiseTimer = 0.8;
-    let intensity = 50.0;
-    const changeColor = function(delta) {
-      // for (let i = 0; i < sprites.children.length; ++i) {
-      //   sprites.children[i].tint = Math.floor(
-      //     sprites.children[i].x + sprites.children[i].y
-      //   );
-      // }
-    };
-    const implode = function(delta) {
-      noiseTimer = Math.max(0.0, noiseTimer - app.ticker.deltaMS / 1000);
-      if (noiseTimer == 0.0) {
-        app.ticker.remove(implode);
-        for (let i = 0; i < sprites.children.length; ++i) {
-          sprites.children[i].x = sprites.children[i].origin.x;
-          sprites.children[i].y = sprites.children[i].origin.y;
-        }
-        return;
-      }
-      for (let i = 0; i < sprites.children.length; ++i) {
-        sprites.children[i].x +=
-          intensity * -sprites.children[i].direction.x * delta;
-        sprites.children[i].y +=
-          intensity * -sprites.children[i].direction.y * delta;
-      }
-    };
-    const explode = function(delta) {
-      noiseTimer = Math.max(0.0, noiseTimer - app.ticker.deltaMS / 1000);
-      if (noiseTimer == 0.0) {
-        app.ticker.remove(explode);
-        app.ticker.add(implode);
-        noiseTimer = 0.8;
-      }
-      for (let i = 0; i < sprites.children.length; ++i) {
-        sprites.children[i].x +=
-          intensity * sprites.children[i].direction.x * delta;
-        sprites.children[i].y +=
-          intensity * sprites.children[i].direction.y * delta;
-      }
-    };
-    app.ticker.add(explode);
-    app.ticker.add(changeColor);
+
+    app.ticker.add(function(delta){
+      console.log('update');
+      for(let i=0; i < sprites.children.length; ++i)
+    {
+      sprites.children[i].update(delta);
+    }});
+    //app.ticker.add(changeColor);
   }
 }
 
@@ -188,18 +155,40 @@ class PixelSprite extends PIXI.Sprite {
   }
   direction = { x: 0, y: 0 };
   origin = { x: 0, y: 0 };
-  animationTimer = 3;
-  wait = 0;
+  animationTimer = 12.0;
+  waitTimer = 3.0;
   currentUpdate = this.wait;
+  implodeTimer = this.animationTimer;
+  explodeTimer=this.animationTimer;
   wait(delta) {
-    this.wait -= delta;
-    if (this.wait < 0) {
+    this.waitTimer -= delta;
+    if (this.waitTimer < 0) {
+      this.waitTimer = (this.origin.x / window.innerWidth) * this.animationTimer;
       this.currentUpdate = this.explode;
     }
-    this.wait = (this.origin.x / window.innerWidth) * this.animationTimer;
   }
-  explode(delta) {}
-  implode(delta) {}
+  explode(delta) {
+    this.explodeTimer -= delta;
+    this.x += this.direction.x * delta;
+    this.y += this.direction.y * delta;
+    if(this.explodeTimer < 0)
+    {
+      this.explodeTimer = this.animationTimer;
+      this.currentUpdate = this.implode;
+    }
+  }
+  implode(delta) {
+    this.implodeTimer -= delta;
+    this.x -= this.direction.x * delta;
+    this.y -= this.direction.y * delta;
+    if(this.implodeTimer < 0)
+    {
+      this.x = this.origin.x;
+      this.y = this.origin.y;
+      this.implodeTimer = this.animationTimer;
+      this.currentUpdate = this.wait;
+    }
+  }
   update(delta) {
     this.currentUpdate(delta);
   }
