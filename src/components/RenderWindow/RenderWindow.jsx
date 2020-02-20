@@ -9,7 +9,8 @@ class RenderWindow extends Component {
     this.state.app = new PIXI.Application({
       width: window.outerWidth,
       height: window.innerHeight - 100,
-      transparent: false
+      transparent: false,
+      antialias: true
     });
   }
   updatePixi = element => {
@@ -134,11 +135,11 @@ class TextParticle {
     let noiseTimer = 0.8;
     let intensity = 50.0;
     const changeColor = function(delta) {
-      for (let i = 0; i < sprites.children.length; ++i) {
-        sprites.children[i].tint = Math.floor(
-          sprites.children[i].x + sprites.children[i].y
-        );
-      }
+      // for (let i = 0; i < sprites.children.length; ++i) {
+      //   sprites.children[i].tint = Math.floor(
+      //     sprites.children[i].x + sprites.children[i].y
+      //   );
+      // }
     };
     const implode = function(delta) {
       noiseTimer = Math.max(0.0, noiseTimer - app.ticker.deltaMS / 1000);
@@ -188,7 +189,20 @@ class PixelSprite extends PIXI.Sprite {
   direction = { x: 0, y: 0 };
   origin = { x: 0, y: 0 };
   animationTimer = 3;
-
+  wait = 0;
+  currentUpdate = this.wait;
+  wait(delta) {
+    this.wait -= delta;
+    if (this.wait < 0) {
+      this.currentUpdate = this.explode;
+    }
+    this.wait = (this.origin.x / window.innerWidth) * this.animationTimer;
+  }
+  explode(delta) {}
+  implode(delta) {}
+  update(delta) {
+    this.currentUpdate(delta);
+  }
   hover(event) {
     console.log("mouseData");
     console.log(event);
