@@ -11,7 +11,7 @@ class ProjectPage extends Component {
     return (
       <div id="projects">
         <div>
-          <h3>PROJECTS</h3>
+          <h3 className="title">PROJECTS</h3>
         </div>
         <div className="grid">
           <Card

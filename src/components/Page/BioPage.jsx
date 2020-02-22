@@ -10,7 +10,7 @@ class BioPage extends Component {
   render() {
     return (
       <div className="contentfield">
-        <h3>BIO</h3>
+        <p className="title">BIO</p>
         <div style={{ width: "30%", display: "inline-block" }}>
           <ProfilePicture src="/ProfilePicture.jpg" />
         </div>
@@ -41,7 +41,7 @@ class BioPage extends Component {
                 document.documentElement
               ).getPropertyValue("--background-color")}
               height="30px"
-              value="50%"
+              value="65%"
               skill ="Java"
             />
                         <Bar
@@ -58,6 +58,20 @@ class BioPage extends Component {
               value="50%"
               skill ="MongoDB"
             />
+                                    <Bar
+              backgroundColor={getComputedStyle(
+                document.documentElement
+              ).getPropertyValue("--foreground-color1")}
+              color={getComputedStyle(
+                document.documentElement
+              ).getPropertyValue("--foreground-color2")}
+              labelColor={getComputedStyle(
+                document.documentElement
+              ).getPropertyValue("--background-color")}
+              height="30px"
+              value="55%"
+              skill ="Nodejs"
+            />
           <Bar
               backgroundColor={getComputedStyle(
                 document.documentElement
@@ -69,7 +83,7 @@ class BioPage extends Component {
                 document.documentElement
               ).getPropertyValue("--background-color")}
               height="30px"
-              value="50%"
+              value="65%"
               skill ="Javascript"
             />
           <Bar
@@ -83,7 +97,7 @@ class BioPage extends Component {
                 document.documentElement
               ).getPropertyValue("--background-color")}
               height="30px"
-              value="50%"
+              value="55%"
               skill ="Machine Learning"
             />
                         <Bar
@@ -97,7 +111,7 @@ class BioPage extends Component {
                 document.documentElement
               ).getPropertyValue("--background-color")}
               height="30px"
-              value="50%"
+              value="60%"
               skill ="Python"
             />
             <Bar
@@ -111,7 +125,7 @@ class BioPage extends Component {
                 document.documentElement
               ).getPropertyValue("--background-color")}
               height="30px"
-              value="50%"
+              value="60%"
               skill ="React"
             />
                         <Bar
@@ -139,7 +153,7 @@ class BioPage extends Component {
                 document.documentElement
               ).getPropertyValue("--background-color")}
               height="30px"
-              value="50%"
+              value="70%"
               skill ="C++"
             />
           </div>

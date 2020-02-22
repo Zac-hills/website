@@ -155,20 +155,20 @@ class PixelSprite extends PIXI.Sprite {
   }
   direction = { x: 0, y: 0 };
   origin = { x: 0, y: 0 };
-  animationTimer = 12.0;
+  animationTimer = 3.0;
   waitTimer = 3.0;
   currentUpdate = this.wait;
   implodeTimer = this.animationTimer;
   explodeTimer=this.animationTimer;
   wait(delta) {
-    this.waitTimer -= delta;
+    this.waitTimer -= delta/60;
     if (this.waitTimer < 0) {
       this.waitTimer = (this.origin.x / window.innerWidth) * this.animationTimer;
       this.currentUpdate = this.explode;
     }
   }
   explode(delta) {
-    this.explodeTimer -= delta;
+    this.explodeTimer -= delta/60;
     this.x += this.direction.x * delta;
     this.y += this.direction.y * delta;
     if(this.explodeTimer < 0)
@@ -178,7 +178,7 @@ class PixelSprite extends PIXI.Sprite {
     }
   }
   implode(delta) {
-    this.implodeTimer -= delta;
+    this.implodeTimer -= delta/60;
     this.x -= this.direction.x * delta;
     this.y -= this.direction.y * delta;
     if(this.implodeTimer < 0)
