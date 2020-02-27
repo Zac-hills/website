@@ -1,5 +1,9 @@
-.grid{
-    width: 70%;
-    margin-left: 14%;
-    margin-right: 14%;
+.grid {
+  width: 70%;
+  margin-left: 14%;
+  margin-right: 14%;
+}
+
+.projectpage {
+  background-color: #f5f5f5;
 }

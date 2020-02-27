@@ -9,7 +9,7 @@ class RenderWindow extends Component {
     this.state.app = new PIXI.Application({
       width: window.outerWidth,
       height: window.innerHeight - 100,
-      transparent: false,
+      transparent: true,
       antialias: true
     });
   }
@@ -30,7 +30,10 @@ class RenderWindow extends Component {
     return (
       <div>
         <div
-          style={{ height: window.innerHeight - 100 }}
+          style={{
+            height: window.innerHeight - 100,
+            backgroundImage: 'url("codebackground.png")'
+          }}
           ref={this.updatePixi}
         ></div>
         <Footer />
@@ -129,17 +132,18 @@ class TextParticle {
       temp.direction.y = Math.random() * random();
       temp.origin.x = this.coords[i].x;
       temp.origin.y = this.coords[i].y;
-      temp.waitTimer = (temp.origin.x / window.innerWidth) * temp.animationTimer;
+      temp.waitTimer =
+        (temp.origin.x / window.innerWidth) * temp.animationTimer;
 
       sprites.addChild(temp);
     }
 
-    app.ticker.add(function(delta){
-      console.log('update');
-      for(let i=0; i < sprites.children.length; ++i)
-    {
-      sprites.children[i].update(delta);
-    }});
+    app.ticker.add(function(delta) {
+      console.log("update");
+      for (let i = 0; i < sprites.children.length; ++i) {
+        sprites.children[i].update(delta);
+      }
+    });
     //app.ticker.add(changeColor);
   }
 }
@@ -159,30 +163,29 @@ class PixelSprite extends PIXI.Sprite {
   waitTimer = 3.0;
   currentUpdate = this.wait;
   implodeTimer = this.animationTimer;
-  explodeTimer=this.animationTimer;
+  explodeTimer = this.animationTimer;
   wait(delta) {
-    this.waitTimer -= delta/60;
+    this.waitTimer -= delta / 60;
     if (this.waitTimer < 0) {
-      this.waitTimer = (this.origin.x / window.innerWidth) * this.animationTimer;
+      this.waitTimer =
+        (this.origin.x / window.innerWidth) * this.animationTimer;
       this.currentUpdate = this.explode;
     }
   }
   explode(delta) {
-    this.explodeTimer -= delta/60;
+    this.explodeTimer -= delta / 60;
     this.x += this.direction.x * delta;
     this.y += this.direction.y * delta;
-    if(this.explodeTimer < 0)
-    {
+    if (this.explodeTimer < 0) {
       this.explodeTimer = this.animationTimer;
       this.currentUpdate = this.implode;
     }
   }
   implode(delta) {
-    this.implodeTimer -= delta/60;
+    this.implodeTimer -= delta / 60;
     this.x -= this.direction.x * delta;
     this.y -= this.direction.y * delta;
-    if(this.implodeTimer < 0)
-    {
+    if (this.implodeTimer < 0) {
       this.x = this.origin.x;
       this.y = this.origin.y;
       this.implodeTimer = this.animationTimer;
