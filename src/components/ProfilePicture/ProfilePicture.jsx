@@ -7,7 +7,16 @@ class ProfilePicture extends Component {
   render() {
     return (
       <div>
-        <img style={{width:"200px", height:"300px", objectFit:'none', objectPosition:'54% 20%', borderRadius:'15px'}} src={this.props.src}></img>
+        <img
+          style={{
+            width: "170px",
+            height: "170px",
+            objectFit: "none",
+            objectPosition: "56% 20%",
+            borderRadius: "40%"
+          }}
+          src={this.props.src}
+        ></img>
       </div>
     );
   }

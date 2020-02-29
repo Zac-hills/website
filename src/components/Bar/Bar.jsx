@@ -13,25 +13,33 @@ class Bar extends Component {
           backgroundColor: this.props.backgroundColor,
           display: "flex",
           textAlign: "left",
-          margin:'10px',
-          borderRadius:'8px',
+          margin: "10px",
+          borderRadius: "8px"
         }}
       >
         <div
           style={{
-            margin:"0px",
+            margin: "0px",
             display: "inline-block",
-            width: "20%",
+            width: "30%",
             backgroundColor: this.props.labelColor,
             height: this.props.height,
-            textAlign:'center',
-            borderTopLeftRadius:'8px',
-            borderBottomLeftRadius:'8px'
+            textAlign: "center",
+            borderTopLeftRadius: "8px",
+            borderBottomLeftRadius: "8px"
           }}
         >
-          <p style={{color:getComputedStyle(
+          <p
+            style={{
+              color: getComputedStyle(
                 document.documentElement
-              ).getPropertyValue("--text-color"), margin:'0px', padding:'0px'}}><b>{this.props.skill}</b></p>
+              ).getPropertyValue("--text-color"),
+              margin: "0px",
+              padding: "0px"
+            }}
+          >
+            <b>{this.props.skill}</b>
+          </p>
         </div>
         <div
           style={{
@@ -39,12 +47,10 @@ class Bar extends Component {
             height: this.props.height,
             width: this.props.value,
             backgroundColor: this.props.color,
-            borderTopRightRadius:'8px',
-            borderBottomRightRadius:'8px'
+            borderTopRightRadius: "8px",
+            borderBottomRightRadius: "8px"
           }}
-        >
-        </div>
-
+        ></div>
       </div>
     );
   }
