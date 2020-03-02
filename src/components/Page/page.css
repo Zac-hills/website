@@ -33,7 +33,6 @@
 }
 
 .backgroundcard {
-  border-radius: 20px;
   background-color: var(--foreground-color1);
   margin-left: 10%;
   margin-right: 10%;

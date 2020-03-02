@@ -5,8 +5,17 @@
   margin: 20px;
   border-radius: 15px;
   cursor: pointer;
+  background-color: transparent;
+  position: relative;
 }
 
-.card:hover {
-  transform: scale(1.1);
+.cardtext {
+  transition: all 0.3s ease-in;
+  transform: translateY(-100px);
+  z-index: -10;
+  position: relative;
+}
+
+.card:hover .cardtext {
+  transform: translateY(0);
 }

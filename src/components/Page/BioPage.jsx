@@ -42,6 +42,7 @@ class BioPage extends Component {
                 height="30px"
                 value="40%"
                 skill="SQL"
+                percentage="70%"
               />
               <Bar
                 backgroundColor={getComputedStyle(
@@ -56,6 +57,7 @@ class BioPage extends Component {
                 height="30px"
                 value="55%"
                 skill="Java"
+                percentage="85%"
               />
               <Bar
                 backgroundColor={getComputedStyle(
@@ -70,6 +72,7 @@ class BioPage extends Component {
                 height="30px"
                 value="40%"
                 skill="MongoDB"
+                percentage="70%"
               />
               <Bar
                 backgroundColor={getComputedStyle(
@@ -84,6 +87,7 @@ class BioPage extends Component {
                 height="30px"
                 value="45%"
                 skill="Nodejs"
+                percentage="75%"
               />
               <Bar
                 backgroundColor={getComputedStyle(
@@ -98,6 +102,7 @@ class BioPage extends Component {
                 height="30px"
                 value="55%"
                 skill="Javascript"
+                percentage="85%"
               />
               <Bar
                 backgroundColor={getComputedStyle(
@@ -112,6 +117,7 @@ class BioPage extends Component {
                 height="30px"
                 value="45%"
                 skill="ML"
+                percentage="75%"
               />
               <Bar
                 backgroundColor={getComputedStyle(
@@ -126,6 +132,7 @@ class BioPage extends Component {
                 height="30px"
                 value="50%"
                 skill="Python"
+                percentage="80%"
               />
               <Bar
                 backgroundColor={getComputedStyle(
@@ -140,6 +147,7 @@ class BioPage extends Component {
                 height="30px"
                 value="50%"
                 skill="React"
+                percentage="80%"
               />
               <Bar
                 backgroundColor={getComputedStyle(
@@ -154,6 +162,7 @@ class BioPage extends Component {
                 height="30px"
                 value="40%"
                 skill="CSS"
+                percentage="70%"
               />
               <Bar
                 backgroundColor={getComputedStyle(
@@ -168,6 +177,7 @@ class BioPage extends Component {
                 height="30px"
                 value="60%"
                 skill="C++"
+                percentage="90%"
               />
             </div>
           </div>

@@ -48,9 +48,14 @@ class Bar extends Component {
             width: this.props.value,
             backgroundColor: this.props.color,
             borderTopRightRadius: "8px",
-            borderBottomRightRadius: "8px"
+            borderBottomRightRadius: "8px",
+            verticalAlign: "middle"
           }}
-        ></div>
+        >
+          <p style={{ margin: "0px", marginLeft: "5px" }}>
+            {this.props.percentage}
+          </p>
+        </div>
       </div>
     );
   }

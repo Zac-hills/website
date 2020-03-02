@@ -9,11 +9,11 @@ class ProfilePicture extends Component {
       <div>
         <img
           style={{
-            width: "170px",
+            width: "270px",
             height: "170px",
             objectFit: "none",
             objectPosition: "56% 20%",
-            borderRadius: "40%"
+            borderRadius: "10%"
           }}
           src={this.props.src}
         ></img>

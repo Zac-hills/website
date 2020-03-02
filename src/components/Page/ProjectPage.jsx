@@ -16,33 +16,39 @@ class ProjectPage extends Component {
         <div className="grid">
           <Card
             src="/leadlag.png"
-            width="500px"
-            height="400px"
+            width="300px"
+            height="250px"
             text="An Exploratory Tool to determine Canada's academic landscape relative to the rest of the world."
           />
           <Card
             src="/visualmodel.png"
-            width="500px"
-            height="400px"
+            width="300px"
+            height="250px"
             text="A visualization of the spatial limitations for Convolutional Neural Networks."
           />
           <Card
             src="/textvisualization.png"
-            width="500px"
-            height="400px"
+            width="300px"
+            height="250px"
             text="A visualization of the features learned for Convolutional Neural Networks text analysis."
           />
           <Card
             src="/compound.png"
-            width="500px"
-            height="400px"
+            width="300px"
+            height="250px"
             text="A new approach for mobile passwords to increase the theoretical security."
           />
           <Card
             src="/visualmodel.png"
-            width="500px"
-            height="400px"
+            width="300px"
+            height="250px"
             text="A simulator that depicts the impact of electrical vehicles on the grid infrastructure for the town of Ajax."
+          />
+          <Card
+            src="/visualmodel.png"
+            width="300px"
+            height="250px"
+            text="A fluid simulator used to display sentiment data."
           />
         </div>
       </div>
