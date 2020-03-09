@@ -13,7 +13,7 @@ class Page extends Component {
       <article className="contentfield">
         <RenderWindow />
         <BioPage />
-        <ProjectPage />
+        <ProjectPage cardWidth="400px" cardHeight="400px" />
       </article>
     );
   }
