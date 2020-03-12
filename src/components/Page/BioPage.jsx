@@ -14,21 +14,31 @@ class BioPage extends Component {
         <div className="backgroundcard">
           <div
             style={{
-              width: "30%",
+              width: "50%",
+              height: "100%",
               display: "inline-block",
               verticalAlign: "top",
-              marginTop: "40px"
+              backgroundColor: "white",
+              textAlign: "center",
+              position: "relative"
             }}
           >
-            <ProfilePicture src="/ProfilePicture.jpg" />
-            <p className="text">
-              I am a driven developer working at the VIA Lab. I posess a wide
-              range of experience such as machine learning, robotics, web
-              development and data visualization.
-            </p>
+            <div style={{ height: "300px", marginTop: "100px" }}>
+              <ProfilePicture src="/ProfilePicture.jpg" />
+              <p>
+                I am a driven developer working at the VIA Lab. I posess a wide
+                range of experience such as machine learning, robotics, web
+                development and data visualization.
+              </p>
+            </div>
           </div>
-          <div style={{ display: "inline-block", width: "600px" }}>
-            <div style={{ margin: "8%" }}>
+          <div
+            style={{
+              display: "inline-block",
+              width: "500px"
+            }}
+          >
+            <div style={{ margin: "8%", textAlign: "center" }}>
               <Bar
                 backgroundColor={getComputedStyle(
                   document.documentElement
