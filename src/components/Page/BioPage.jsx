@@ -9,7 +9,7 @@ class BioPage extends Component {
   }
   render() {
     return (
-      <div className="contentfield">
+      <div id="bio" className="contentfield">
         <p className="title">BIO</p>
         <div className="backgroundcard">
           <div
@@ -20,10 +20,17 @@ class BioPage extends Component {
               verticalAlign: "top",
               backgroundColor: "white",
               textAlign: "center",
-              position: "relative"
+              position: "relative",
+              boxShadow:
+                "0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)"
             }}
           >
-            <div style={{ height: "300px", marginTop: "100px" }}>
+            <div
+              style={{
+                height: "300px",
+                margin: "100px"
+              }}
+            >
               <ProfilePicture src="/ProfilePicture.jpg" />
               <p>
                 I am a driven developer working at the VIA Lab. I posess a wide

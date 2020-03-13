@@ -77,6 +77,7 @@ class TextParticle {
     anchor: 0.5
   };
   app = null;
+  timer = 0;
   /**
    *
    * @param {PIXI.Application} app
@@ -139,7 +140,13 @@ class TextParticle {
     }
 
     app.ticker.add(function(delta) {
-      console.log("update");
+      self.timer += delta * (1.0 / 60.0);
+      if (self.timer > 14) {
+        for (let i = 0; i < sprites.children.length; ++i) {
+          sprites.children[i].animating = true;
+        }
+        self.timer = 0;
+      }
       for (let i = 0; i < sprites.children.length; ++i) {
         sprites.children[i].update(delta);
       }
@@ -164,6 +171,7 @@ class PixelSprite extends PIXI.Sprite {
   currentUpdate = this.wait;
   implodeTimer = this.animationTimer;
   explodeTimer = this.animationTimer;
+  animating = true;
   wait(delta) {
     this.waitTimer -= delta / 60;
     if (this.waitTimer < 0) {
@@ -189,6 +197,12 @@ class PixelSprite extends PIXI.Sprite {
       this.x = this.origin.x;
       this.y = this.origin.y;
       this.implodeTimer = this.animationTimer;
+      this.animating = false;
+      this.currentUpdate = this.notAnimating;
+    }
+  }
+  notAnimating(delta) {
+    if (this.animating) {
       this.currentUpdate = this.wait;
     }
   }
