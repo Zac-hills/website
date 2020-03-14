@@ -9,7 +9,7 @@ class BioPage extends Component {
   }
   render() {
     return (
-      <div id="bio" className="contentfield">
+      <div id="bio">
         <p className="title">BIO</p>
         <div className="backgroundcard">
           <div
@@ -20,7 +20,6 @@ class BioPage extends Component {
               verticalAlign: "top",
               backgroundColor: "white",
               textAlign: "center",
-              position: "relative",
               boxShadow:
                 "0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)"
             }}
