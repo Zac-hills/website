@@ -1,13 +1,15 @@
 import * as PIXI from "pixi.js";
 import React, { Component } from "react";
 import Footer from "../Footer/Footer";
+import ProjectPage from "../Page/ProjectPage";
+import BioPage from "../Page/BioPage";
 
 class RenderWindow extends Component {
   state = { pixi_cnt: null, app: null };
   constructor(props) {
     super(props);
     this.state.app = new PIXI.Application({
-      width: window.outerWidth,
+      width: document.documentElement.clientWidth - 17,
       height: window.innerHeight - 100,
       transparent: true,
       antialias: true
@@ -37,6 +39,8 @@ class RenderWindow extends Component {
           ref={this.updatePixi}
         ></div>
         <Footer />
+        <BioPage />
+        <ProjectPage cardWidth="400px" cardHeight="400px" />
       </div>
     );
   }

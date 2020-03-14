@@ -12,8 +12,6 @@ class Page extends Component {
     return (
       <article className="contentfield">
         <RenderWindow />
-        <BioPage />
-        <ProjectPage cardWidth="400px" cardHeight="400px" />
       </article>
     );
   }

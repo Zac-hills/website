@@ -11,7 +11,9 @@ class ProjectPage extends Component {
   render() {
     return (
       <div id="projects" className="projectpage">
-        <p className="title">Projects</p>
+        <p className="title" style={{ paddingTop: "50px" }}>
+          Projects
+        </p>
         <div
           style={{
             marginLeft: "15%",
