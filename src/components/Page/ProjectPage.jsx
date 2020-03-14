@@ -16,10 +16,10 @@ class ProjectPage extends Component {
         </p>
         <div
           style={{
-            marginLeft: "15%",
-            marginRight: "15%",
-            marginTop: "30px",
-            marginBottom: "30px"
+            marginLeft: "5%",
+            marginRight: "5%",
+            paddingTop: "30px",
+            paddingBottom: "30px"
           }}
         >
           <CardColumns
@@ -38,7 +38,7 @@ class ProjectPage extends Component {
                 height: this.props.cardHeight,
                 cursor: "pointer",
                 flex: 0,
-                margin: "30px"
+                margin: "15px"
               }}
             >
               <Card.Img
@@ -64,7 +64,7 @@ class ProjectPage extends Component {
                 height: this.props.cardHeight,
                 cursor: "pointer",
                 flex: 0,
-                margin: "30px"
+                margin: "15px"
               }}
             >
               <Card.Img
@@ -89,7 +89,7 @@ class ProjectPage extends Component {
                 height: this.props.cardHeight,
                 cursor: "pointer",
                 flex: 0,
-                margin: "30px"
+                margin: "15px"
               }}
             >
               <Card.Img
@@ -114,7 +114,7 @@ class ProjectPage extends Component {
                 height: this.props.cardHeight,
                 cursor: "pointer",
                 flex: 0,
-                margin: "30px"
+                margin: "15px"
               }}
             >
               <Card.Img
@@ -139,7 +139,7 @@ class ProjectPage extends Component {
                 height: this.props.cardHeight,
                 cursor: "pointer",
                 flex: 0,
-                margin: "30px"
+                margin: "15px"
               }}
             >
               <Card.Img

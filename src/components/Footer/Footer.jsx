@@ -7,7 +7,16 @@ class Footer extends Component {
     return (
       <footer className="footer">
         <div style={{ display: "inline-block", width: "50%", height: "100%" }}>
-          <button className="footer-button">HOME</button>
+          <button
+            className="footer-button"
+            onClick={function() {
+              document
+                .getElementById("renderwindow")
+                .scrollIntoView({ behavior: "smooth" });
+            }}
+          >
+            HOME
+          </button>
           <button
             className="footer-button"
             onClick={function() {
@@ -28,13 +37,22 @@ class Footer extends Component {
           >
             PROJECTS
           </button>
-          <button className="footer-button">CONTACT</button>
+          <button
+            className="footer-button"
+            onClick={function() {
+              document
+                .getElementById("contact")
+                .scrollIntoView({ behavior: "smooth" });
+            }}
+          >
+            CONTACT
+          </button>
         </div>
         <div style={{ display: "inline-block", width: "50%", height: "100%" }}>
           <a href="zachary.hills@uoit.net">
             <img
               className="icon"
-              src="/Gmail_Icon.png"
+              src="/mail.png"
               width={512 * this.state.scale}
               height={512 * this.state.scale}
             />
@@ -42,7 +60,7 @@ class Footer extends Component {
           <a href="https://www.linkedin.com/in/zachary-hills-031333185/">
             <img
               className="icon"
-              src="/LI-In-Bug.png"
+              src="/linkedIn.png"
               width={635 * this.state.scale}
               height={540 * this.state.scale}
             />
@@ -50,9 +68,9 @@ class Footer extends Component {
           <a href="https://github.com/Zac-hills">
             <img
               className="icon"
-              src="GitHub-Mark-Light-120px-plus.png"
-              width={120 * 0.25}
-              height={120 * 0.25}
+              src="github.png"
+              width={512 * this.state.scale}
+              height={512 * this.state.scale}
             />
           </a>
         </div>

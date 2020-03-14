@@ -44,3 +44,26 @@
   font-family: Arial, Helvetica, sans-serif;
   color: var(--text-color);
 }
+
+.contact {
+  background-color: var(--background-color);
+}
+
+.formfield {
+  background-color: #333333;
+  color: white;
+  border-color: var(--foreground-color1);
+  border-radius: 5px;
+  width: 300px;
+  margin: 10px;
+}
+
+.formsubmit {
+  background-color: #333333;
+  color: white;
+  border-color: var(--foreground-color1);
+  border-radius: 5px;
+  cursor: pointer;
+  width: 64px;
+  height: 32px;
+}

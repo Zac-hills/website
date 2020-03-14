@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Footer from "../Footer/Footer";
 import ProjectPage from "../Page/ProjectPage";
 import BioPage from "../Page/BioPage";
+import ContactPage from "../Page/ContactPage";
 
 class RenderWindow extends Component {
   state = { pixi_cnt: null, app: null };
@@ -30,7 +31,7 @@ class RenderWindow extends Component {
 
   render() {
     return (
-      <div>
+      <div id="renderwindow">
         <div
           style={{
             height: window.innerHeight - 100,
@@ -41,6 +42,7 @@ class RenderWindow extends Component {
         <Footer />
         <BioPage />
         <ProjectPage cardWidth="400px" cardHeight="400px" />
+        <ContactPage />
       </div>
     );
   }
