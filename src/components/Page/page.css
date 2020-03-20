@@ -67,3 +67,16 @@
   width: 64px;
   height: 32px;
 }
+
+.bg-info{
+  background-color: var(--foreground-color2);
+}
+#bio{
+  scroll-margin:170px;
+}
+#projects{
+  scroll-margin:100px;
+}
+#contact{
+  scroll-margin:70px;
+}

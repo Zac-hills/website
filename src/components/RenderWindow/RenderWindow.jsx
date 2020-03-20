@@ -2,7 +2,7 @@ import * as PIXI from "pixi.js";
 import React, { Component } from "react";
 import Footer from "../Footer/Footer";
 import ProjectPage from "../Page/ProjectPage";
-import BioPage from "../Page/BioPage";
+import BP from "../Page/BioPage";
 import ContactPage from "../Page/ContactPage";
 
 class RenderWindow extends Component {
@@ -40,7 +40,7 @@ class RenderWindow extends Component {
           ref={this.updatePixi}
         ></div>
         <Footer />
-        <BioPage />
+        <BP />
         <ProjectPage cardWidth="400px" cardHeight="400px" />
         <ContactPage />
       </div>

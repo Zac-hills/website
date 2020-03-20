@@ -2,16 +2,28 @@ import React, { Component } from "react";
 import Card from "react-bootstrap/Card";
 import CardColumns from "react-bootstrap/CardColumns";
 import "./projectpage.css";
+import handleViewport from 'react-in-viewport';
 
-class ProjectPage extends Component {
+class SProjectPage extends Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
+  getStyle(){
+    const { inViewport, enterCount } = this.props;
+    //Fade in only the first time we enter the viewport
+    if (inViewport && enterCount === 1) {
+      return { WebkitTransition: 'opacity 0.75s ease-in-out' };
+    } else if (!inViewport && enterCount < 1) {
+      return { WebkitTransition: 'none', opacity: '0' };
+    } else {
+      return {};
+    }
+  }
   render() {
     return (
       <div id="projects" className="projectpage">
-        <p className="title" style={{ paddingTop: "50px" }}>
+        <p className="title" style={{ paddingTop: "50px", ...this.getStyle() }}>
           Projects
         </p>
         <div
@@ -163,5 +175,7 @@ class ProjectPage extends Component {
     );
   }
 }
+
+const ProjectPage = handleViewport(SProjectPage, { rootMargin: '-1.0px' });
 
 export default ProjectPage;

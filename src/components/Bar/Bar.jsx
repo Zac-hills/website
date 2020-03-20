@@ -1,64 +1,46 @@
 import React, { Component } from "react";
-class Bar extends Component {
+import ProgressBar from "react-bootstrap/ProgressBar";
+import handleViewport from 'react-in-viewport';
+import "./bar.css"
+
+class LabeledBar extends Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
+  getStyle(){
+    const { inViewport, enterCount } = this.props;
+    //Fade in only the first time we enter the viewport
+    if (inViewport && enterCount === 1) {
+      return { WebkitTransition: 'all 3.0s ease-in-out', transform:'translateX(0%) scaleX(1)' };
+    } else if (!inViewport && enterCount < 1) {
+      return { WebkitTransition: 'none', transform:'translateX(-50%) scaleX(0)' };
+    } else {
+      return {};
+    }
+  }
+  getLabelStyle(){
+    const { inViewport, enterCount } = this.props;
+    //Fade in only the first time we enter the viewport
+    if (inViewport && enterCount === 1) {
+      return { WebkitTransition: 'opacity 3.0s ease-in-out' };
+    } else if (!inViewport && enterCount < 1) {
+      return { WebkitTransition: 'none', opacity: '0' };
+    } else {
+      return {};
+    }
+  }
   render() {
     return (
-      <div
-        style={{
-          height: this.props.height,
-          width: "100%",
-          backgroundColor: this.props.backgroundColor,
-          display: "flex",
-          textAlign: "left",
-          margin: "10px",
-          borderRadius: "8px"
-        }}
-      >
-        <div
-          style={{
-            margin: "0px",
-            display: "inline-block",
-            width: "30%",
-            backgroundColor: this.props.labelColor,
-            height: this.props.height,
-            textAlign: "center",
-            borderTopLeftRadius: "8px",
-            borderBottomLeftRadius: "8px"
-          }}
-        >
-          <p
-            style={{
-              color: getComputedStyle(
-                document.documentElement
-              ).getPropertyValue("--text-color"),
-              margin: "0px",
-              padding: "0px"
-            }}
-          >
-            <b>{this.props.skill}</b>
-          </p>
-        </div>
-        <div
-          style={{
-            display: "inline-block",
-            height: this.props.height,
-            width: this.props.value,
-            backgroundColor: this.props.color,
-            borderTopRightRadius: "8px",
-            borderBottomRightRadius: "8px",
-            verticalAlign: "middle"
-          }}
-        >
-          <p style={{ margin: "0px", marginLeft: "5px" }}>
-            {this.props.percentage}
-          </p>
-        </div>
-      </div>
-    );
+      <ProgressBar style={{margin:"10px", textAlign:"center", height:"30px"}}>
+          <ProgressBar variant="success" now={35} label={this.props.label} />
+          <ProgressBar variant="warning" now={this.props.now-45} style={this.getStyle()}/>
+          <ProgressBar variant="info" now={10} label={`${this.props.now}%`} style={this.getLabelStyle()} />
+      </ProgressBar>
+      );
   }
 }
+
+const Bar = handleViewport(LabeledBar, { rootMargin: '-1.0px' });
 
 export default Bar;

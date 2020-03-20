@@ -2,18 +2,30 @@ import React, { Component } from "react";
 import "./page.css";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import handleViewport from 'react-in-viewport';
 
-class ContactPage extends Component {
+class SContactPage extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+  }
+  getStyle(){
+    const { inViewport, enterCount } = this.props;
+    //Fade in only the first time we enter the viewport
+    if (inViewport && enterCount === 1) {
+      return { WebkitTransition: 'opacity 0.75s ease-in-out' };
+    } else if (!inViewport && enterCount < 1) {
+      return { WebkitTransition: 'none', opacity: '0' };
+    } else {
+      return {};
+    }
   }
   render() {
     return (
       <div className="contact" id="contact">
         <p
           className="title"
-          style={{ paddingTop: "50px", color: "white", marginTop: "0px" }}
+          style={{ paddingTop: "50px", color: "white", marginTop: "0px", ...this.getStyle() }}
         >
           Contact
         </p>
@@ -71,5 +83,7 @@ class ContactPage extends Component {
     );
   }
 }
+
+const ContactPage = handleViewport(SContactPage, { rootMargin: '-1.0px' });
 
 export default ContactPage;
