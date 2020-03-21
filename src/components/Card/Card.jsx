@@ -1,103 +1,53 @@
 import * as React from "react";
-import "./Card.css";
+//import "./Card.css";
+import Card from "react-bootstrap/Card";
+import handleViewport from 'react-in-viewport';
 
-class Card extends React.Component {
+class SCard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { transform: "" };
+    this.state = { };
   }
-
-  mousemove(e) {
-    console.log(e);
-    const maxSkew = 15;
-    let x = this.state.size.x + this.state.size.width / 2;
-    let y = this.state.size.y + this.state.size.height / 2;
-    let xDiff = x - e.clientX;
-    let yDiff = y - e.clientY;
-    xDiff /= this.state.size.width / 2;
-    yDiff /= this.state.size.height / 2;
-    this.setState({
-      transform: `rotateY(${-Math.floor(
-        xDiff * maxSkew
-      )}deg) rotateX(${Math.floor(yDiff * maxSkew)}deg)`
-    });
-  }
-  mouseleave(e) {
-    this.setState({ transform: "rotateY(0deg) rotateX(0deg)" });
-  }
-  onClick() {
-    if (this.props.url != null) {
-      // location.href = this.props.url;
+  getStyle(){
+    const { inViewport, enterCount } = this.props;
+    //Fade in only the first time we enter the viewport
+    if (inViewport && enterCount === 1) {
+      return { WebkitTransition: 'opacity 0.75s ease-in-out' };
+    } else if (!inViewport && enterCount < 1) {
+      return { WebkitTransition: 'none', opacity: '0' };
     } else {
-      console.log("this card does not have url");
+      return {};
     }
-  }
-  componentDidMount() {
-    this.setState({ size: this.element.getBoundingClientRect() });
-  }
-  getSize(element) {
-    this.element = element;
-  }
-  shouldComponentUpdate(nextProps) {
-    return this.state.transform !== nextProps.transform;
   }
   render() {
     return (
-      <div
-        onClick={this.onClick.bind(this)}
-        onMouseLeave={this.mouseleave.bind(this)}
-        ref={this.getSize.bind(this)}
-        className="card"
-        style={{
-          width: this.props.width,
-          height: this.props.height,
-          transform: this.state.transform
-        }}
-      >
-        <div
-          style={{
-            width: "100%",
-            height: "100%",
-            display: "block"
-          }}
-        >
-          <img
-            style={{ zIndex: "1" }}
-            src={this.props.src}
-            width="100%"
-            height="100%"
-          ></img>
-        </div>
-        <div
-          className="cardtext"
-          style={{
-            borderBottomLeftRadius: "15px",
-            borderBottomRightRadius: "15px",
-            width: "100%",
-            height: "35%",
-            display: "block",
-            backgroundColor: getComputedStyle(
-              document.documentElement
-            ).getPropertyValue("--background-color")
-          }}
-        >
-          <p
-            style={{
-              zIndex: "-10",
-              fontFamily: this.props.fontFamily,
-              fontSize: this.props.fontSize,
-              color: getComputedStyle(
-                document.documentElement
-              ).getPropertyValue("--text-color"),
-              margin: "0px"
-            }}
-          >
-            {this.props.text}
-          </p>
-        </div>
-      </div>
+      <Card
+      className="shadow"
+      style={{
+        width: this.props.cardWidth,
+        height: this.props.cardHeight,
+        cursor: "pointer",
+        flex: 0,
+        margin: "15px",
+        ...this.getStyle()
+      }}
+    >
+      <Card.Img
+      variant="top"
+      src={this.props.imageName}
+      style={{ width: this.props.cardWidth, height: "60%" }}
+    />
+    <Card.Body>
+      <Card.Title>
+    <b>{this.props.title}</b>
+      </Card.Title>
+      <Card.Text style={{ margin: "5px" }}>
+        {this.props.text}
+      </Card.Text>
+    </Card.Body>
+  </Card>
     );
   }
 }
-
-export default Card;
+const ACard = handleViewport(SCard, { rootMargin: '-1.0px' });
+export default ACard;

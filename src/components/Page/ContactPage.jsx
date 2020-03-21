@@ -46,7 +46,7 @@ class SContactPage extends Component {
               style={{ height: "220px" }}
             />
           </Form.Group>
-          <Button variant="primary" type="submit" className="formsubmit">
+          <Button style={{margin:"20px"}} variant="primary" type="submit" className="formsubmit">
             Submit
           </Button>
         </Form>
