@@ -27,6 +27,7 @@
 .icon {
   object-fit: contain;
   margin: 3px;
+  margin-top: 30px;
   position: relative;
   left: 30%;
 }

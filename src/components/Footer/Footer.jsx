@@ -6,7 +6,7 @@ class Footer extends Component {
   render() {
     return (
       <footer className="footer">
-        <div style={{ display: "inline-block", width: "50%", height: "100%" }}>
+        <div style={{ float:"left", width: "50%", height: "100%" }}>
           <button
             className="footer-button"
             onClick={function() {
@@ -48,7 +48,7 @@ class Footer extends Component {
             CONTACT
           </button>
         </div>
-        <div style={{ display: "inline-block", width: "50%", height: "100%" }}>
+        <div style={{ float:"left", width: "50%", height: "100%" }}>
           <a href="zachary.hills@uoit.net">
             <img
               className="icon"

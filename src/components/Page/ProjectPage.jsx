@@ -44,7 +44,7 @@ class SProjectPage extends Component {
               justifyContent: "center"
             }}
           >
-            <ACard cardWidth={this.props.cardWidth} cardHeight={this.props.cardHeight} title="test" imageName="leadlag.png" text="testing" />
+            <ACard cardWidth={this.props.cardWidth} cardHeight={this.props.cardHeight} title="test" imageName="leadlag.png" text="testing" url="/Projects/LeadLag"/>
             <ACard cardWidth={this.props.cardWidth} cardHeight={this.props.cardHeight} title="test" imageName="leadlag.png" text="testing" />
             <ACard cardWidth={this.props.cardWidth} cardHeight={this.props.cardHeight} title="test" imageName="leadlag.png" text="testing" />
             <ACard cardWidth={this.props.cardWidth} cardHeight={this.props.cardHeight} title="test" imageName="leadlag.png" text="testing" />

@@ -3,15 +3,12 @@ import React, { Component } from "react";
 class Article extends Component {
   state = { isFocused: false };
   render() {
-    if (this.state.isFocused) {
       return (
-        <a href="">
-          <button>{this.props.title}</button>
-        </a>
+        <div>
+          <h3>{this.props.title}</h3>
+          <p>{this.props.text}</p>
+        </div>
       );
-    } else {
-      return <iframe src={this.props.url} />;
-    }
   }
 }
 

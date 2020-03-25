@@ -2,11 +2,12 @@ import * as React from "react";
 //import "./Card.css";
 import Card from "react-bootstrap/Card";
 import handleViewport from 'react-in-viewport';
+import {Redirect} from 'react-router-dom';
 
 class SCard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { };
+    this.state = {clicked:false };
   }
   getStyle(){
     const { inViewport, enterCount } = this.props;
@@ -19,7 +20,14 @@ class SCard extends React.Component {
       return {};
     }
   }
+  onClick(){
+    this.setState({clicked:true});
+  }
+
   render() {
+    if(this.state.clicked){
+      return (<Redirect to={this.props.url}/>)
+    }
     return (
       <Card
       className="shadow"
@@ -31,6 +39,7 @@ class SCard extends React.Component {
         margin: "15px",
         ...this.getStyle()
       }}
+      onClick={this.onClick.bind(this)}
     >
       <Card.Img
       variant="top"

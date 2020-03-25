@@ -41,10 +41,10 @@ class BioPage extends Component {
             <div
               style={{
                 height: "300px",
-                margin: "100px"
+                margin: "30px"
               }}
             >
-              <ProfilePicture src="/ProfilePicture.jpg" />
+              <ProfilePicture src="/profilePicture.jpg" />
               <p style={{width:"100%", padding:"5px"}}>
                 I am a driven developer working at the VIA Lab. I posess a wide
                 range of experience such as machine learning, robotics, web

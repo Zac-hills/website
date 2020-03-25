@@ -9,12 +9,10 @@ import LeadLag from "./components/Projects/LeadLag";
 
 ReactDOM.render(
     <Router>
-            <div>
             <Switch>
 		    <Route exact path='/Projects/LeadLag' component={LeadLag}/>
             <Route path='/' component={Page}/>
             </Switch>
-            </div>
     </Router>
 
 , document.getElementById('root'));
