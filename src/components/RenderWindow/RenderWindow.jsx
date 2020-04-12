@@ -35,7 +35,7 @@ class RenderWindow extends Component {
         <div
           style={{
             height: window.innerHeight - 100,
-            backgroundImage: 'url("codebackground.png")'
+            backgroundImage: `url("${process.env.PUBLIC_URL}/codebackground.png")`
           }}
           ref={this.updatePixi}
         ></div>

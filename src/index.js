@@ -9,9 +9,9 @@ import LeadLag from "./components/Projects/LeadLag";
 
 ReactDOM.render(
     <Router>
-            <Switch>
+        <Switch>
 		    <Route exact path='/Projects/LeadLag' component={LeadLag}/>
-            <Route path='/' component={Page}/>
+            <Route exact path='/' component={Page}/>
             </Switch>
     </Router>
 

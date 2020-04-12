@@ -44,7 +44,7 @@ class BioPage extends Component {
                 margin: "30px"
               }}
             >
-              <ProfilePicture src="/profilePicture.jpg" />
+              <ProfilePicture src={process.env.PUBLIC_URL+"/profilePicture.jpg"} />
               <p style={{width:"100%", padding:"5px"}}>
                 I am a driven developer working at the VIA Lab. I posess a wide
                 range of experience such as machine learning, robotics, web

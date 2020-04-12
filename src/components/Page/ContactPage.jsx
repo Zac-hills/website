@@ -54,7 +54,7 @@ class SContactPage extends Component {
           <a href="zachary.hills@uoit.net">
             <img
               className="icon"
-              src="/mail.png"
+              src={process.env.PUBLIC_URL+"/mail.png"}
               width={64}
               height={64}
               style={{ left: "0%" }}
@@ -63,7 +63,7 @@ class SContactPage extends Component {
           <a href="https://www.linkedin.com/in/zachary-hills-031333185/">
             <img
               className="icon"
-              src="/linkedIn.png"
+              src={process.env.PUBLIC_URL+"/linkedIn.png"}
               width={64}
               height={64}
               style={{ left: "0%" }}
@@ -72,7 +72,7 @@ class SContactPage extends Component {
           <a href="https://github.com/Zac-hills">
             <img
               className="icon"
-              src="github.png"
+              src={process.env.PUBLIC_URL+"/github.png"}
               width={64}
               height={64}
               style={{ left: "0%" }}
