@@ -49,14 +49,6 @@ class Footer extends Component {
           </button>
         </div>
         <div style={{ float:"left", width: "50%", height: "100%" }}>
-          <a href="zachary.hills@uoit.net">
-            <img
-              className="icon"
-              src={`${process.env.PUBLIC_URL}/mail.png`}
-              width={512 * this.state.scale}
-              height={512 * this.state.scale}
-            />
-          </a>
           <a href="https://www.linkedin.com/in/zachary-hills-031333185/">
             <img
               className="icon"

@@ -64,15 +64,6 @@ class SContactPage extends Component {
           </Button>
         </Form>
         <div>
-          <a href="zachary.hills@uoit.net">
-            <img
-              className="icon"
-              src={process.env.PUBLIC_URL+"/mail.png"}
-              width={64}
-              height={64}
-              style={{ left: "0%" }}
-            />
-          </a>
           <a href="https://www.linkedin.com/in/zachary-hills-031333185/">
             <img
               className="icon"

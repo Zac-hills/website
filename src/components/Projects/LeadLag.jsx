@@ -11,7 +11,7 @@ class LeadLag extends Component {
     return (
       <div>
         <Jumbotron>
-          <image src="" style={{ width: "100%", height: "auto" }}>
+          <image src={`${process.env.PUBLIC_URL}/leadlag-header.png`} style={{ width: "100%", height: "auto" }}>
             {" "}
           </image>
         </Jumbotron>
