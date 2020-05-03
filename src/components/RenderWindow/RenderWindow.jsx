@@ -13,7 +13,7 @@ class RenderWindow extends Component {
       width: document.documentElement.clientWidth - 17,
       height: window.innerHeight - 100,
       transparent: true,
-      antialias: true
+      antialias: false
     });
   }
   updatePixi = element => {
@@ -94,6 +94,7 @@ class TextParticle {
     this.text.anchor.set(this.position.anchor);
     this.text.x = this.position.x;
     this.text.y = this.position.y;
+    console.log(this.text.texture.baseTexture.resource.source);
     app.stage.addChild(this.text);
 
     let tmpCanvas = app.renderer.plugins.extract.canvas(app.stage);
@@ -112,15 +113,13 @@ class TextParticle {
       }
     }
     var sprites = new PIXI.ParticleContainer(this.coords.length, {
-      scale: true,
+      scale: false,
       position: true,
       rotation: false,
       uvs: false,
       alpha: false,
-      tint: true
+      tint: false
     });
-    sprites.interactive = true;
-    sprites.interactiveChildren = true;
     let self = this;
     app.stage.addChild(sprites);
     // Set the fill color
@@ -214,11 +213,6 @@ class PixelSprite extends PIXI.Sprite {
   }
   update(delta) {
     this.currentUpdate(delta);
-  }
-  hover(event) {
-    console.log("mouseData");
-    console.log(event);
-    const displacement = 30;
   }
 }
 export default RenderWindow;

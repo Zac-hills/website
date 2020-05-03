@@ -3,6 +3,7 @@ import "./page.css";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import handleViewport from 'react-in-viewport';
+import emailjs from 'emailjs-com';
 
 class SContactPage extends Component {
   constructor(props) {
@@ -20,6 +21,18 @@ class SContactPage extends Component {
       return {};
     }
   }
+  componentDidMount() { 
+    console.log("component mounted");
+    emailjs.init("user_ZO3mBYY8RpFxXqV19WLmI");
+  }
+  onSubmit(submission) { 
+    const values = submission.currentTarget;
+    console.log(values);
+    emailjs.send('gmail', "template_HxjMScy6", { message_html: values[1].value, from_name: values[0].value }).then(res => {
+      console.log('Email successfully sent!')
+    })
+      .catch(err => console.error('Oh well, you failed. Here some thoughts on the error that occured:', err));
+  }
   render() {
     return (
       <div className="contact" id="contact">
@@ -29,11 +42,11 @@ class SContactPage extends Component {
         >
           Contact
         </p>
-        <Form>
+        <Form onSubmit={this.onSubmit}>
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Control
               type="email"
-              placeholder="name@example.com"
+              placeholder="your email - name@example.com"
               className="formfield"
             />
           </Form.Group>
@@ -46,7 +59,7 @@ class SContactPage extends Component {
               style={{ height: "220px" }}
             />
           </Form.Group>
-          <Button style={{margin:"20px"}} variant="primary" type="submit" className="formsubmit">
+          <Button style={{ margin: "20px" }} variant="primary" type="submit" className="formsubmit">
             Submit
           </Button>
         </Form>
