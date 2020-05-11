@@ -44,8 +44,8 @@ class SProjectPage extends Component {
               justifyContent: "center"
             }}
           >
-            <ACard cardWidth={this.props.cardWidth} cardHeight={this.props.cardHeight} title="test" imageName={process.env.PUBLIC_URL+"/leadlag.png"} text="testing" url="/Projects/LeadLag"/>
-            <ACard cardWidth={this.props.cardWidth} cardHeight={this.props.cardHeight} title="test" imageName={process.env.PUBLIC_URL+"/leadlag.png"} text="testing" />
+            <ACard cardWidth={this.props.cardWidth} cardHeight={this.props.cardHeight} title="Consilium Maps" imageName={process.env.PUBLIC_URL+"/leadlag.png"} text="A web application that determines Canada's academic standing in comparison to the rest of the world based on given keywords." url="/Projects/LeadLag"/>
+            <ACard cardWidth={this.props.cardWidth} cardHeight={this.props.cardHeight} title="Spatial Evaluation" imageName={process.env.PUBLIC_URL+"/visualmodel.PNG"} text="An application that evaluates the spatial limitations for Convolutional Neural Networks through the use of Unmanned Aerial Vehicles." />
             <ACard cardWidth={this.props.cardWidth} cardHeight={this.props.cardHeight} title="test" imageName={process.env.PUBLIC_URL+"/leadlag.png"} text="testing" />
             <ACard cardWidth={this.props.cardWidth} cardHeight={this.props.cardHeight} title="test" imageName={process.env.PUBLIC_URL+"/leadlag.png"} text="testing" />
           </CardColumns>

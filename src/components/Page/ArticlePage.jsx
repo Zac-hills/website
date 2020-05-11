@@ -6,9 +6,10 @@ class ArticlePage extends Component {
     return (
       <div>
         <Footer />
-        <div style={{ margin: "auto", width: "50%" }}>
+        <div style={{ margin: "auto", width: "50%", marginTop:"10% " }}>
           <h2>{this.props.title}</h2>
-          <p>{this.props.text}</p>
+          <p style={{
+            fontSize: "21px", lineHeight: "32px", fontWeight: "400"}}>{this.props.text}</p>
         </div>
       </div>
     );
