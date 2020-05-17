@@ -7,7 +7,7 @@
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  z-index:1;
+  z-index: 1;
 }
 
 .footer > a {
@@ -27,13 +27,11 @@
 .icon {
   object-fit: contain;
   margin: 3px;
-  margin-top: 30px;
+  margin-top: 60px;
   position: relative;
-  left: 30%;
 }
 
 .footer-button {
-  display: inline-block;
   color: var(--font-color);
   background: var(--background-color);
   outline: 0;
@@ -43,6 +41,7 @@
   margin-top: 5%;
   position: relative;
   cursor: pointer;
+  float: left;
 }
 
 .footer-button:hover() {
