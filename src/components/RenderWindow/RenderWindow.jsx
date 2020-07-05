@@ -1,218 +1,207 @@
-import * as PIXI from "pixi.js";
+import * as THREE from "three";
 import React, { Component } from "react";
 import Footer from "../Footer/Footer";
 import ProjectPage from "../Page/ProjectPage";
 import BP from "../Page/BioPage";
 import ContactPage from "../Page/ContactPage";
+import { TessellateModifier } from "../../tessellation-modifier";
+let renderer, scene, camera;
+
+let mesh, uniforms;
+
+let WIDTH = window.innerWidth,
+  HEIGHT = window.innerHeight;
 
 class RenderWindow extends Component {
-  state = { pixi_cnt: null, app: null };
+  state = {};
   constructor(props) {
     super(props);
-    this.state.app = new PIXI.Application({
-      width: document.documentElement.clientWidth - 17,
-      height: window.innerHeight - 100,
-      transparent: true,
-      antialias: false
+  }
+  componentDidMount() {
+    let loader = new THREE.FontLoader();
+    let self = this;
+    loader.load(process.env.PUBLIC_URL + "/Ubuntu_Thin_Regular.json", function (
+      font
+    ) {
+      self.init(font);
+      self.mount.appendChild(renderer.domElement);
+      self.animate();
     });
   }
-  updatePixi = element => {
-    // the element is the DOM object that we will use as container to add pixi stage(canvas)
-    this.state.pixi_cnt = element;
-    //now we are adding the application to the DOM element which we got from the Ref.
-    if (this.state.pixi_cnt && this.state.pixi_cnt.children.length <= 0) {
-      this.state.pixi_cnt.appendChild(this.state.app.view);
-      new TextParticle(
-        "Zachary Hills \n \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tFull Stack Developer",
-        this.state.app
-      );
-    }
-  };
+  init(font) {
+    const vertexshader = `
+    uniform float amplitude;
 
+    attribute vec3 customColor;
+    attribute vec3 displacement;
+
+    varying vec3 vNormal;
+    varying vec3 vColor;
+
+    void main() {
+
+      vNormal = normal;
+      vColor = customColor;
+
+      vec3 newPosition = position + normal * amplitude * displacement;
+      gl_Position = projectionMatrix * modelViewMatrix * vec4( newPosition, 1.0 );
+
+    }`;
+
+    const fragmentshader = `
+    varying vec3 vNormal;
+    varying vec3 vColor;
+
+    void main() {
+
+      const float ambient = 0.4;
+
+      vec3 light = vec3( 1.0 );
+      light = normalize( light );
+
+      float directional = max( dot( vNormal, light ), 0.0 );
+
+      gl_FragColor = vec4( ( directional + ambient ) * vColor, 1.0 );
+
+    }`;
+    camera = new THREE.PerspectiveCamera(40, WIDTH / HEIGHT, 1, 10000);
+    camera.position.set(0, 50, 550);
+
+    scene = new THREE.Scene();
+    //scene.background = new THREE.Color( 0x050505 );
+
+    //
+
+    let geometry = new THREE.TextGeometry(
+      "Zachary Hills, \n Full Stack Developer",
+      {
+        font: font,
+
+        size: 40,
+        height: 5,
+        curveSegments: 3,
+
+        bevelThickness: 2,
+        bevelSize: 1,
+        bevelEnabled: true,
+      }
+    );
+
+    geometry.center();
+
+    let tessellateModifier = new TessellateModifier(8);
+
+    for (let i = 0; i < 6; i++) {
+      tessellateModifier.modify(geometry);
+    }
+
+    //
+
+    geometry = new THREE.BufferGeometry().fromGeometry(geometry);
+
+    let numFaces = geometry.attributes.position.count / 3;
+
+    let colors = new Float32Array(numFaces * 3 * 3);
+    let displacement = new Float32Array(numFaces * 3 * 3);
+
+    let color = new THREE.Color();
+    const colorMap = [
+      { h: 352, s: 1, l: 0.682 },
+      { h: 0, s: 0, l: 0.286 },
+      { h: 0, s: 0.8, l: 0.482 },
+    ];
+    for (let f = 0; f < numFaces; f++) {
+      let index = 9 * f;
+      const idx = Math.round(2 * Math.random());
+      //let h = 0.3 * Math.random();
+      //let s = 0.5 + 0.5 * Math.random();
+      //let l = 0.1 + 0.5 * Math.random();
+      let h = colorMap[idx].h;
+      let s = colorMap[idx].s;
+      let l = colorMap[idx].l;
+
+      color.setHSL(h, s, l);
+
+      let d = 10 * (0.5 - Math.random());
+
+      for (let i = 0; i < 3; i++) {
+        colors[index + 3 * i] = color.r;
+        colors[index + 3 * i + 1] = color.g;
+        colors[index + 3 * i + 2] = color.b;
+
+        displacement[index + 3 * i] = d;
+        displacement[index + 3 * i + 1] = d;
+        displacement[index + 3 * i + 2] = d;
+      }
+    }
+
+    geometry.setAttribute("customColor", new THREE.BufferAttribute(colors, 3));
+    geometry.setAttribute(
+      "displacement",
+      new THREE.BufferAttribute(displacement, 3)
+    );
+
+    //
+
+    uniforms = {
+      amplitude: { value: 0.0 },
+    };
+
+    let shaderMaterial = new THREE.ShaderMaterial({
+      uniforms: uniforms,
+      vertexShader: vertexshader,
+      fragmentShader: fragmentshader,
+    });
+
+    //
+
+    mesh = new THREE.Mesh(geometry, shaderMaterial);
+
+    scene.add(mesh);
+
+    renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setSize(WIDTH, HEIGHT);
+    //
+    window.addEventListener("resize", this.onWindowResize.bind(this), false);
+  }
+
+  onWindowResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  }
+
+  animate() {
+    requestAnimationFrame(this.animate.bind(this));
+    this.render_text();
+  }
+
+  render_text() {
+    //console.log(uniforms.amplitude.value);
+    let time = Date.now() * 0.001;
+
+    uniforms.amplitude.value = 1.0 + Math.sin(time * 0.5);
+    renderer.render(scene, camera);
+  }
   render() {
     return (
       <div id="renderwindow">
         <div
           style={{
             height: window.innerHeight - 100,
-            backgroundImage: `url("${process.env.PUBLIC_URL}/codebackground.png")`
+            backgroundImage: `url("${process.env.PUBLIC_URL}/codebackground.png")`,
           }}
-          ref={this.updatePixi}
+          ref={(ref) => (this.mount = ref)}
         ></div>
         <Footer />
         <BP />
-        <ProjectPage cardWidth="400px" cardHeight="400px" />
+        <ProjectPage cardWidth="400px" cardHeight="450px" />
         <ContactPage />
       </div>
     );
   }
 }
 
-class TextParticle {
-  /**
-   *
-   * @param {string} text
-   * @param {PIXI.Application} app
-   * @param {{x:Number, y:Number, anchor:Number}} position
-   * @param {{fontWeight:string, fontSize:Number, fontFamily:string, fill:string, align:string}} textSettings
-   */
-  constructor(text, app, position = null, textSettings = null) {
-    if (position != null) {
-      this.position = position;
-    }
-    if (textSettings != null) {
-      this.textSettings = textSettings;
-    }
-    this.message = text;
-    this.init(app);
-  }
-  message = null;
-  text = null;
-  textSettings = {
-    fontWeight: "bold",
-    fontSize: 60,
-    fontFamily: "Arial",
-    fill: "#f0f0f0",
-    align: "center"
-  };
-  particles = [];
-  coords = [];
-  position = {
-    x: window.innerWidth / 2,
-    y: window.innerHeight / 2,
-    anchor: 0.5
-  };
-  app = null;
-  timer = 0;
-  /**
-   *
-   * @param {PIXI.Application} app
-   */
-  init(app) {
-    this.app = app;
-    this.text = new PIXI.Text(this.message, this.textSettings);
-    this.text.anchor.set(this.position.anchor);
-    this.text.x = this.position.x;
-    this.text.y = this.position.y;
-    console.log(this.text.texture.baseTexture.resource.source);
-    app.stage.addChild(this.text);
-
-    let tmpCanvas = app.renderer.plugins.extract.canvas(app.stage);
-    let imageData = tmpCanvas
-      .getContext("2d")
-      .getImageData(0, 0, app.renderer.width, app.renderer.height);
-
-    app.stage.removeChild(this.text);
-    let widthDiff = (app.renderer.width - tmpCanvas.width) / 2;
-    let heightDiff = (app.renderer.height - tmpCanvas.height) / 2;
-    for (let y = 0; y < tmpCanvas.height; ++y) {
-      for (let x = 0; x < tmpCanvas.width; ++x) {
-        if (imageData.data[(y * imageData.width + x) * 4 + 3] > 128) {
-          this.coords.push({ x: x + widthDiff, y: y + heightDiff });
-        }
-      }
-    }
-    var sprites = new PIXI.ParticleContainer(this.coords.length, {
-      scale: false,
-      position: true,
-      rotation: false,
-      uvs: false,
-      alpha: false,
-      tint: false
-    });
-    let self = this;
-    app.stage.addChild(sprites);
-    // Set the fill color
-    for (let i = 0; i < this.coords.length; ++i) {
-      // Draw a circle
-      let temp = new PixelSprite(PIXI.Texture.WHITE);
-      temp.tint = 0xf0f0f0;
-      temp.x = this.coords[i].x;
-      temp.y = this.coords[i].y;
-      temp.width = 1;
-      temp.height = 1;
-      const random = function() {
-        return -1 + Math.random() * 2;
-      };
-      temp.direction.x = Math.random() * random();
-      temp.direction.y = Math.random() * random();
-      temp.origin.x = this.coords[i].x;
-      temp.origin.y = this.coords[i].y;
-      temp.waitTimer =
-        (temp.origin.x / window.innerWidth) * temp.animationTimer;
-
-      sprites.addChild(temp);
-    }
-
-    app.ticker.add(function(delta) {
-      self.timer += delta * (1.0 / 60.0);
-      if (self.timer > 14) {
-        for (let i = 0; i < sprites.children.length; ++i) {
-          sprites.children[i].animating = true;
-        }
-        self.timer = 0;
-      }
-      for (let i = 0; i < sprites.children.length; ++i) {
-        sprites.children[i].update(delta);
-      }
-    });
-    //app.ticker.add(changeColor);
-  }
-}
-
-class PixelSprite extends PIXI.Sprite {
-  constructor(texture) {
-    super(texture);
-    this.interactive = true;
-    this.hitArea = this.getBounds();
-    this.on("mouseover", function(event) {
-      console.log("mouseData");
-    });
-  }
-  direction = { x: 0, y: 0 };
-  origin = { x: 0, y: 0 };
-  animationTimer = 3.0;
-  waitTimer = 3.0;
-  currentUpdate = this.wait;
-  implodeTimer = this.animationTimer;
-  explodeTimer = this.animationTimer;
-  animating = true;
-  wait(delta) {
-    this.waitTimer -= delta / 60;
-    if (this.waitTimer < 0) {
-      this.waitTimer =
-        (this.origin.x / window.innerWidth) * this.animationTimer;
-      this.currentUpdate = this.explode;
-    }
-  }
-  explode(delta) {
-    this.explodeTimer -= delta / 60;
-    this.x += this.direction.x * delta;
-    this.y += this.direction.y * delta;
-    if (this.explodeTimer < 0) {
-      this.explodeTimer = this.animationTimer;
-      this.currentUpdate = this.implode;
-    }
-  }
-  implode(delta) {
-    this.implodeTimer -= delta / 60;
-    this.x -= this.direction.x * delta;
-    this.y -= this.direction.y * delta;
-    if (this.implodeTimer < 0) {
-      this.x = this.origin.x;
-      this.y = this.origin.y;
-      this.implodeTimer = this.animationTimer;
-      this.animating = false;
-      this.currentUpdate = this.notAnimating;
-    }
-  }
-  notAnimating(delta) {
-    if (this.animating) {
-      this.currentUpdate = this.wait;
-    }
-  }
-  update(delta) {
-    this.currentUpdate(delta);
-  }
-}
 export default RenderWindow;

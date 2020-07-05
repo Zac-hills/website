@@ -8,7 +8,18 @@ class Bar extends Component {
     super(props);
     this.state = {};
   }
-
+  fuzzy(val, label) {
+    if (!label) {
+      return "";
+    }
+    if (val <= 65) {
+      return "Novice";
+    } else if (val < 80) {
+      return "Intermmediate";
+    } else if (val >= 80) {
+      return "Advanced";
+    }
+  }
   render() {
     return (
       <ProgressBar
@@ -16,7 +27,11 @@ class Bar extends Component {
       >
         <ProgressBar variant="success" now={35} label={this.props.label} />
         <ProgressBar variant="warning" now={this.props.now - 45} />
-        <ProgressBar variant="info" now={10} label={`${this.props.now}%`} />
+        <ProgressBar
+          variant="info"
+          now={10}
+          label={`${this.fuzzy(this.props.now, this.props.shouldLabel)}`}
+        />
       </ProgressBar>
     );
   }

@@ -67,17 +67,17 @@ class ProjectPage extends Component {
               cardWidth={this.props.cardWidth}
               cardHeight={this.props.cardHeight}
               redirectCallback={this.setRedirect.bind(this)}
-              title="test"
-              imageName={process.env.PUBLIC_URL + "/leadlag.png"}
-              text="testing"
+              title="Citation Galaxy"
+              imageName={process.env.PUBLIC_URL + "/citation-galaxy.png"}
+              text="A web based tool to aid in the pursuit of understanding how, where and when citations occur. Features text analysis tools and the ability to export data."
             />
             <ACard
               cardWidth={this.props.cardWidth}
               cardHeight={this.props.cardHeight}
               redirectCallback={this.setRedirect.bind(this)}
-              title="test"
-              imageName={process.env.PUBLIC_URL + "/leadlag.png"}
-              text="testing"
+              title="Tied in Knots"
+              imageName={process.env.PUBLIC_URL + "/tied-in-knots.png"}
+              text="Tied in Knots is a visualization tool to aid the exploration and understanding of sexual assaults in an academic environment. With the main objective of maintaining individual accounts."
             />
           </CardColumns>
         </div>

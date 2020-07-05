@@ -83,6 +83,8 @@ class SContactPage extends Component {
             />
           </a>
         </div>
+        <div style={{ marginTop: "50px", textDecoration: "none", fontSize:"8px"}}>Icons made by <a style={{ color:"black",textDecoration: "none" }} href="https://www.flaticon.com/authors/icongeek26" title="Icongeek26">Icongeek26</a> from <a style={{ color:"black",textDecoration: "none" }} href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+        <div style={{ textDecoration: "none", fontSize:"8px"}}>Icons made by <a style={{ color:"black",textDecoration: "none" }} href="https://www.flaticon.com/authors/phatplus" title="phatplus">phatplus</a> from <a style={{ color:"black",textDecoration: "none" }} href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
       </div>
     );
   }

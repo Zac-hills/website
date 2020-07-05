@@ -32,13 +32,13 @@ class ACard extends React.Component {
         <Card.Img
           variant="top"
           src={this.props.imageName}
-          style={{ width: this.props.cardWidth, height: "60%" }}
+          style={{ width: this.props.cardWidth, height: "50%" }}
         />
         <Card.Body>
-          <Card.Title>
+          <Card.Title style={{ marginTop: "15px" }}>
             <b>{this.props.title}</b>
           </Card.Title>
-          <Card.Text style={{ margin: "5px", textAlign: "left" }}>
+          <Card.Text style={{ padding: "15px", textAlign: "left" }}>
             {this.props.text}
           </Card.Text>
         </Card.Body>

@@ -32,12 +32,12 @@
 
 .backgroundcard {
   background-color: var(--foreground-color1);
-  margin:auto;
+  margin: auto;
   text-align: left;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   height: 500px;
   margin-bottom: 30px;
-  width:900px;
+  width: 900px;
 }
 
 .text {
@@ -68,15 +68,32 @@
   height: 32px;
 }
 
-.bg-info{
+.bg-info {
   background-color: var(--foreground-color2);
 }
-#bio{
-  scroll-margin:170px;
+#bio {
+  scroll-margin: 170px;
 }
-#projects{
-  scroll-margin:100px;
+#projects {
+  scroll-margin: 100px;
 }
-#contact{
-  scroll-margin:70px;
+#contact {
+  scroll-margin: 70px;
+}
+
+.bio-icon {
+  max-width: 150px;
+}
+.bio-div {
+  margin: 80px;
+  margin-left: 120px;
+  margin-right: 120px;
+}
+.banner {
+  width: auto;
+  height: calc(100vh - 100px);
+}
+.banner-container {
+  display: flex;
+  justify-content: center;
 }

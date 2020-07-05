@@ -47,3 +47,7 @@
 .footer-button:hover() {
   color: var(--foreground-color2);
 }
+
+body{
+  overflow-x: hidden;
+}

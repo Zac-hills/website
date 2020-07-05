@@ -17,11 +17,11 @@ class LeadLag extends Component {
     }
     return (
       <div>
-        <Jumbotron>
+        <Jumbotron className="banner-container">
           <img
             src={`${process.env.PUBLIC_URL}/leadlag-header.png`}
             alt="leadlag-header"
-            style={{ width: "auto", height: "100%" }}
+            className="banner"
           ></img>
         </Jumbotron>
         <Header redirectCallback={this.setRedirect.bind(this)} />
