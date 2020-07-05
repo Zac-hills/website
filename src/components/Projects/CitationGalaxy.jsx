@@ -3,7 +3,7 @@ import Jumbotron from "react-bootstrap/Jumbotron";
 import Header from "../Header/Header";
 import ProjectPage from "../Page/ProjectPage";
 import { Redirect } from "react-router-dom";
-class LeadLag extends Component {
+class CitationGalaxy extends Component {
   constructor(props) {
     super(props);
     this.state = { redirect: false };
@@ -114,5 +114,4 @@ class LeadLag extends Component {
     );
   }
 }
-
-export default LeadLag;
+export default CitationGalaxy;

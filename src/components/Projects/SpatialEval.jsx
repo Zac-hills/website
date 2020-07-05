@@ -111,7 +111,7 @@ class SpatialEval extends Component {
             spatial data.
           </p>
         </div>
-        <ProjectPage cardWidth="400px" cardHeight="400px" />
+        <ProjectPage cardWidth="400px" cardHeight="450px" />
       </div>
     );
   }

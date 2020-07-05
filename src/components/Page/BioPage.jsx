@@ -50,8 +50,9 @@ class BioPage extends Component {
                 src={process.env.PUBLIC_URL + "/profilePicture.jpg"}
               />
               <p style={{ width: "100%", padding: "5px" }}>
-                I am a driven developer working at the VIA Lab. I posess a wide
-                range of experience such as machine learning, robotics, web
+                A full stack developer working at the{" "}
+                <a href="http://vialab.science.uoit.ca/">VIA Lab</a>. I posess a
+                wide range of experience such as machine learning, robotics, web
                 development and data visualization.
               </p>
             </div>

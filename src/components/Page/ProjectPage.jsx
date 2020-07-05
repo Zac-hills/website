@@ -70,6 +70,7 @@ class ProjectPage extends Component {
               title="Citation Galaxy"
               imageName={process.env.PUBLIC_URL + "/citation-galaxy.png"}
               text="A web based tool to aid in the pursuit of understanding how, where and when citations occur. Features text analysis tools and the ability to export data."
+              url="/Projects/CitationGalaxy"
             />
             <ACard
               cardWidth={this.props.cardWidth}
@@ -78,6 +79,7 @@ class ProjectPage extends Component {
               title="Tied in Knots"
               imageName={process.env.PUBLIC_URL + "/tied-in-knots.png"}
               text="Tied in Knots is a visualization tool to aid the exploration and understanding of sexual assaults in an academic environment. With the main objective of maintaining individual accounts."
+              url="/Projects/TiedInKnots"
             />
           </CardColumns>
         </div>
