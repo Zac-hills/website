@@ -38,7 +38,9 @@ class ACard extends React.Component {
           <Card.Title style={{ marginTop: "15px" }}>
             <b>{this.props.title}</b>
           </Card.Title>
-          <Card.Text style={{ padding: "15px", textAlign: "left" }}>
+          <Card.Text
+            style={{ margin: "0px", padding: "15px", textAlign: "left" }}
+          >
             {this.props.text}
           </Card.Text>
         </Card.Body>

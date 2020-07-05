@@ -15,7 +15,7 @@ class Bar extends Component {
     if (val <= 65) {
       return "Novice";
     } else if (val < 80) {
-      return "Intermmediate";
+      return "Intermediate";
     } else if (val >= 80) {
       return "Advanced";
     }
