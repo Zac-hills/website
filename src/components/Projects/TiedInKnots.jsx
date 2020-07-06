@@ -19,11 +19,11 @@ class TiedInKnots extends Component {
     return (
       <div>
         <Jumbotron className="banner-container">
-          <img
-            src={`${process.env.PUBLIC_URL}/leadlag-header.png`}
-            alt="leadlag-header"
+          <iframe
             className="banner"
-          ></img>
+            style={{ width: "100%" }}
+            src="https://vialab.github.io/tied-in-knots/#/"
+          ></iframe>
         </Jumbotron>
         <Header redirectCallback={this.setRedirect.bind(this)} />
         <div
@@ -34,41 +34,10 @@ class TiedInKnots extends Component {
             maxWidth: "800px",
           }}
         >
-          <h2>Consilium Maps</h2>
+          <h2>Tied In Knots</h2>
+          <p className="article-text">Tied in Knots is a</p>
           <p className="article-text">
-            Consilium Maps is a data exploratory tool with a basis of the lead
-            lag metric. The lead lag metric is used to calculate the offset of
-            two frequency. The frequencies in this case is each countries paper
-            output for each year that have the given keyword or phrase within.
-            For example, the above picture shows a search result for the keyword
-            spinach, the color for each country denotes how far ahead or behind
-            that country is relative to Canada's output. The basis behind this
-            tool is the dataset{" "}
-            <a href="https://www.dimensions.ai/">Dimensions.AI</a>. The
-            Dimensions data set has over 108 million papers with meta data such
-            as authors, institution affiliation, funding, paper citations and
-            patents.
-          </p>
-          <p className="article-text">
-            The sheer size of the data presented a challenge, in order to load
-            all of this data during run time we implemented a progressive loader
-            that allows you to interact with the partially loaded data. The
-            scrubber represents all of Canada's currently loaded data.
-            <img
-              src={`${process.env.PUBLIC_URL}/leadlag-scrubber.png`}
-              style={{
-                width: "50%",
-                height: "auto",
-                float: "left",
-                margin: "20px",
-                marginLeft: "-80px",
-              }}
-            ></img>
-            This allows the user to gauge areas of interest. The scrubber can be
-            resized which changes the selection size. The minimum amount of
-            years that can be selected is 3 and the maximum is 10. Another
-            feature that helps the user determine areas of interest is the event
-            graphs.
+            Tied in Knots is an interactive visualization
           </p>
           <p className="article-text" style={{ marginTop: "100px" }}>
             <img
