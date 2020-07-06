@@ -79,26 +79,26 @@ class BioPage extends Component {
           </div>
         </div>
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <div class="bio-div">
+          <div className="bio-div">
             <img
-              class="bio-icon"
+              className="bio-icon"
               src={process.env.PUBLIC_URL + "/code.svg"}
             ></img>
-            <p>FrontEnd Solutions</p>
+            <p>Front End Solutions</p>
           </div>
-          <div class="bio-div">
+          <div className="bio-div">
             <img
-              class="bio-icon"
+              className="bio-icon"
               src={process.env.PUBLIC_URL + "/database.svg"}
             ></img>
             <p>Database Solutions</p>
           </div>
-          <div class="bio-div">
+          <div className="bio-div">
             <img
-              class="bio-icon"
+              className="bio-icon"
               src={process.env.PUBLIC_URL + "/process.svg"}
             ></img>
-            <p>BackEnd Solutions</p>
+            <p>Back End Solutions</p>
           </div>
         </div>
       </div>
