@@ -19,7 +19,7 @@ class CitationGalaxy extends Component {
       <div>
         <Jumbotron className="banner-container">
           <img
-            src={`${process.env.PUBLIC_URL}/leadlag-header.png`}
+            src={`${process.env.PUBLIC_URL}/citation-galaxy.png`}
             alt="leadlag-header"
             className="banner"
           ></img>
@@ -33,80 +33,85 @@ class CitationGalaxy extends Component {
             maxWidth: "800px",
           }}
         >
-          <h2>Consilium Maps</h2>
+          <h2>Citation Galaxy</h2>
           <p className="article-text">
-            Consilium Maps is a data exploratory tool with a basis of the lead
-            lag metric. The lead lag metric is used to calculate the offset of
-            two frequency. The frequencies in this case is each countries paper
-            output for each year that have the given keyword or phrase within.
-            For example, the above picture shows a search result for the keyword
-            spinach, the color for each country denotes how far ahead or behind
-            that country is relative to Canada's output. The basis behind this
-            tool is the dataset{" "}
-            <a href="https://www.dimensions.ai/">Dimensions.AI</a>. The
-            Dimensions data set has over 108 million papers with meta data such
-            as authors, institution affiliation, funding, paper citations and
-            patents.
+            Citation Galaxy is a web based tool to aid bibliometricians in their
+            work. Bibliometrician's work is centered around how, where and when
+            citations occur in academic texts. Their work is paramount to the
+            understanding where funding should be distributed to have the most
+            impact. Their work is especially relevant in Canada because the
+            government uses the funding as an economic stimulus.
           </p>
-          <p className="article-text">
-            The sheer size of the data presented a challenge, in order to load
-            all of this data during run time we implemented a progressive loader
-            that allows you to interact with the partially loaded data. The
-            scrubber represents all of Canada's currently loaded data.
+          <p className="article-text" style={{ marginTop: "100px" }}>
+            The web based tool uses two different datasets{" "}
+            <a href="https://pubmed.ncbi.nlm.nih.gov/">Pubmed</a> and{" "}
+            <a href="https://www.erudit.org/en/">Erudit</a>. The Pubmed data was
+            parsed using{" "}
+            <a href="https://github.com/titipata/pubmed_parser">
+              pubmed_parser
+            </a>
+            . Each text is broken down into two parts: the word distance a word
+            is from the nearest citation, and the sentence distance. The data is
+            stored in a PostgreSQL database. Knowing the distance a word is
+            relative to a citation allows for rules to be created that the users
+            can include in their work.
+          </p>
+          <p className="article-text" style={{ marginTop: "100px" }}>
+            The rule page allows the user to create compound rules to find
+            specific instances where they occur in text. For example, a user
+            could create a simple rule where they would like to find all
+            instances in the texts where the word cancer and heart occur within
+            a distance of 2 sentences of a citation. The rules page supports
+            several logical operators such as NOT, OR, and AND. These operators
+            allow the users to create a complex set of rules in order to find
+            the exact instances they are trying to find in the text. Users can
+            create multiple rulesets to search for in the database. Each ruleset
+            is assigned a color to help display what ruleset triggered in
+            specific areas of the text.
             <img
-              src={`${process.env.PUBLIC_URL}/leadlag-scrubber.png`}
+              src={`${process.env.PUBLIC_URL}/rules-page.png`}
               style={{
-                width: "50%",
+                width: "130%",
                 height: "auto",
                 float: "left",
                 margin: "20px",
-                marginLeft: "-80px",
               }}
             ></img>
-            This allows the user to gauge areas of interest. The scrubber can be
-            resized which changes the selection size. The minimum amount of
-            years that can be selected is 3 and the maximum is 10. Another
-            feature that helps the user determine areas of interest is the event
-            graphs.
           </p>
           <p className="article-text" style={{ marginTop: "100px" }}>
+            The home page shows an overview of all the rulesets that triggered
+            in the texts, specifically where the rulesets occured in the text.
+            The texts are organized into columns based on the year the text was
+            published. By sorting the texts into their year of publication users
+            can start to see how the rules change over time.
             <img
-              src={`${process.env.PUBLIC_URL}/leadlag-events.png`}
+              src={`${process.env.PUBLIC_URL}/overview-vis.png`}
               style={{
-                width: "50%",
+                width: "130%",
                 height: "auto",
-                float: "right",
+                float: "left",
                 margin: "20px",
-                marginRight: "-180px",
               }}
             ></img>
-            The event graphs inform the user which areas have the most lead,
-            most lag, most amount of lead and lag.
           </p>
           <p className="article-text" style={{ marginTop: "100px" }}>
-            Once a timespan is selected the user can now view individual
-            institutions and their output relative to Canada.
+            The papers view page is a more refined view into the occurences of
+            the rules in specific papers. The users can analyze the text
+            surrounding the rules.
             <img
-              src={`${process.env.PUBLIC_URL}/leadlag-nodes.png`}
+              src={`${process.env.PUBLIC_URL}/papers-view.png`}
               style={{
-                width: "50%",
+                width: "130%",
                 height: "auto",
-                float: "right",
+                float: "left",
                 margin: "20px",
-                marginRight: "-80px",
               }}
             ></img>
-            The nodes color is the amount of lead or lag the institution is
-            relative to Canada. The line on the node depicts their output trend
-            for the time span. If the line is moving up the institution's output
-            has increased 5% or more.
           </p>
-          <p className="article-text">
-            The objective of Consilium Maps was to create a tool capable of
-            informing our stake holders of how institutions are performing for
-            certain concepts. Ultimately, we provided a tool that can depict how
-            well institutions / countries are performing on a global scale for
-            searched concepts.
+          <p className="article-text" style={{ marginTop: "100px" }}>
+            Lastly, the export page allows the users to export the specific
+            instances that triggered the rules allowing them to perform manual
+            analysis on a more refined dataset.
           </p>
         </div>
         <ProjectPage cardWidth="400px" cardHeight="450px" />
