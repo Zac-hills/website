@@ -2,20 +2,47 @@ import React, { Component } from "react";
 import "./footer.css";
 
 class Footer extends Component {
-  state = { scale: 0.05, renderArrow: true };
-  onScroll() {
-    this.setState({ renderArrow: false });
+  state = {
+    scale: 0.05,
+    renderArrow: false,
+  };
+  constructor(props) {
+    super(props);
+    this.onScroll = this.onScroll.bind(this);
+    this.onTime = this.onTime.bind(this);
   }
-  onComponentDidMount() {
-    window.addEventListener("scroll", this.onScroll.bind(this));
+  onScroll(event) {
+    if (this.state.renderArrow) this.setState({ renderArrow: false });
+  }
+  onTime() {
+    if (window.scrollY == 0) {
+      window.addEventListener("scroll", this.onScroll);
+    }
+    clearInterval(this.onTime);
+    this.setState({ renderArrow: true });
+  }
+  componentDidMount() {
+    console.log("mounted");
+    window.setInterval(this.onTime, 2000);
+  }
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.onScroll);
+  }
+  onArrowClick() {
+    window.scrollBy({
+      top: window.innerHeight,
+      behavior: "smooth",
+    });
   }
   render() {
     let arrow = <div></div>;
     if (this.state.renderArrow) {
       arrow = (
-        <div className="circle">
-          <div className="arrow-head" style={{ opacity: 1 }}></div>
-        </div>
+        <div
+          className="arrow-head"
+          style={{ opacity: 1 }}
+          onClick={this.onArrowClick.bind(this)}
+        ></div>
       );
     }
     return (
