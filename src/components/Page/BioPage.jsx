@@ -27,7 +27,7 @@ class BioPage extends Component {
         <p className="title" style={this.getStyle()}>
           BIO
         </p>
-        <div className="backgroundcard">
+        <div className="backgroundcard" style={this.getStyle()}>
           <div
             style={{
               width: "50%",
@@ -49,11 +49,13 @@ class BioPage extends Component {
               <ProfilePicture
                 src={process.env.PUBLIC_URL + "/profilePicture.jpg"}
               />
-              <p style={{ width: "100%", padding: "5px", textAlign:"left" }}>
+              <p style={{ width: "100%", padding: "5px", textAlign: "left" }}>
                 I am a full stack developer working at the{" "}
-                <a href="http://vialab.science.uoit.ca/">VIA Lab</a>. I have a passion for technology solutions 
-                and a never ending drive to learn new things. I have experience in a wide array of 
-                subjects such as machine learning, web development, database management, robotics, and data visualizations.
+                <a href="http://vialab.science.uoit.ca/">VIA Lab</a>. I have a
+                passion for technology solutions and a never ending drive to
+                learn new things. I have experience in a wide array of subjects
+                such as machine learning, web development, database management,
+                robotics, and data visualizations.
               </p>
             </div>
           </div>
@@ -61,39 +63,45 @@ class BioPage extends Component {
             style={{
               display: "inline-block",
               width: "400px",
+              height: "100%",
             }}
           >
             <div style={{ margin: "8%" }}>
-              <Bar now={80} label={"C++"} shouldLabel={true} />
+              <label style={{ margin: "10px", color: "white" }}>Advanced</label>
+              <Bar now={80} label={"C++"} />
               <Bar now={80} label={"C#"} />
               <Bar now={80} label={"JS"} />
               <Bar now={80} label={"NodeJS"} />
               <Bar now={80} label={"ML"} />
+              <Bar now={80} label={"WebGL"} />
               <Bar now={80} label={"CV"} />
-              <Bar now={75} label={"Java"} shouldLabel={true} />
+              <label style={{ margin: "10px", color: "white" }}>
+                Intermediate
+              </label>
+              <Bar now={75} label={"Java"} />
               <Bar now={75} label={"MongoDB"} />
               <Bar now={75} label={"SQL"} />
-              <Bar now={70} label={"CSS"} shouldLabel={true} />
+              <Bar now={70} label={"CSS"} />
               <Bar now={70} label={"React"} />
             </div>
           </div>
         </div>
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <div className="bio-div">
+          <div className="bio-div" style={this.getStyle()}>
             <img
               className="bio-icon"
               src={process.env.PUBLIC_URL + "/code.svg"}
             ></img>
             <p>Front End Solutions</p>
           </div>
-          <div className="bio-div">
+          <div className="bio-div" style={this.getStyle()}>
             <img
               className="bio-icon"
               src={process.env.PUBLIC_URL + "/database.svg"}
             ></img>
             <p>Database Solutions</p>
           </div>
-          <div className="bio-div">
+          <div className="bio-div" style={this.getStyle()}>
             <img
               className="bio-icon"
               src={process.env.PUBLIC_URL + "/process.svg"}
