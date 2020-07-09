@@ -2,8 +2,22 @@ import React, { Component } from "react";
 import "./footer.css";
 
 class Footer extends Component {
-  state = { scale: 0.05 };
+  state = { scale: 0.05, renderArrow: true };
+  onScroll() {
+    this.setState({ renderArrow: false });
+  }
+  onComponentDidMount() {
+    window.addEventListener("scroll", this.onScroll.bind(this));
+  }
   render() {
+    let arrow = <div></div>;
+    if (this.state.renderArrow) {
+      arrow = (
+        <div className="circle">
+          <div className="arrow-head" style={{ opacity: 1 }}></div>
+        </div>
+      );
+    }
     return (
       <footer className="footer">
         <div style={{ float: "left", width: "50%", height: "100%" }}>
@@ -48,6 +62,7 @@ class Footer extends Component {
             CONTACT
           </button>
         </div>
+        {arrow}
         <div style={{ float: "left", width: "50%", height: "100%" }}>
           <a href="https://www.linkedin.com/in/zachary-hills-031333185/">
             <img
