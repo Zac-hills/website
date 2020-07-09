@@ -3,6 +3,7 @@ import "./header.css";
 import connect from "react-router-dom";
 import HeaderButton from "./HeaderButton";
 
+let intervalID = null;
 class Header extends Component {
   state = { redirect: false, scale: 0.05, renderArrow: false };
   constructor(props) {
@@ -17,7 +18,7 @@ class Header extends Component {
   }
   componentDidMount() {
     console.log("mounted");
-    window.setInterval(this.onTime, 2000);
+    intervalID = window.setInterval(this.onTime, 2000);
   }
   componentWillUnmount() {
     window.removeEventListener("scroll", this.onScroll);
@@ -30,9 +31,9 @@ class Header extends Component {
   onTime() {
     if (window.scrollY == 0) {
       window.addEventListener("scroll", this.onScroll);
+      this.setState({ renderArrow: true });
     }
-    clearInterval(this.onTime);
-    this.setState({ renderArrow: true });
+    window.clearInterval(intervalID);
   }
   onArrowClick() {
     window.scrollBy({

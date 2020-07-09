@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./footer.css";
 
+let intervalID = null;
 class Footer extends Component {
   state = {
     scale: 0.05,
@@ -15,22 +16,24 @@ class Footer extends Component {
     if (this.state.renderArrow) this.setState({ renderArrow: false });
   }
   onTime() {
+    console.log(window.scrollY);
     if (window.scrollY == 0) {
       window.addEventListener("scroll", this.onScroll);
+      this.setState({ renderArrow: true });
     }
-    clearInterval(this.onTime);
-    this.setState({ renderArrow: true });
+    window.clearInterval(intervalID);
   }
   componentDidMount() {
     console.log("mounted");
-    window.setInterval(this.onTime, 2000);
+    intervalID=window.setInterval(this.onTime, 2000);
   }
   componentWillUnmount() {
     window.removeEventListener("scroll", this.onScroll);
   }
   onArrowClick() {
+    const footerSize = 100;
     window.scrollBy({
-      top: window.innerHeight,
+      top: window.innerHeight - footerSize,
       behavior: "smooth",
     });
   }

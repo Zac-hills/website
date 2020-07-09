@@ -38,7 +38,7 @@ class CitationGalaxy extends Component {
             Citation Galaxy is a web based tool to aid bibliometricians in their
             work. Bibliometrician's work is centered around how, where and when
             citations occur in academic texts. Their work is paramount to the
-            understanding where funding should be distributed to have the most
+            understanding of where funding should be distributed to have the most
             impact. Their work is especially relevant in Canada because the
             government uses the funding as an economic stimulus.
           </p>
@@ -50,11 +50,10 @@ class CitationGalaxy extends Component {
             <a href="https://github.com/titipata/pubmed_parser">
               pubmed_parser
             </a>
-            . Each text is broken down into two parts: the word distance a word
-            is from the nearest citation, and the sentence distance. The data is
+            . Each text is broken down into two parts: the distance a word
+            is from the nearest citation (in words), and the distance in sentences. The data is
             stored in a PostgreSQL database. Knowing the distance a word is
-            relative to a citation allows for rules to be created that the users
-            can include in their work.
+            relative to a citation allows for rules to be created. 
           </p>
           <p className="article-text" style={{ marginTop: "100px" }}>
             The rule page allows the user to create compound rules to find
@@ -66,7 +65,7 @@ class CitationGalaxy extends Component {
             allow the users to create a complex set of rules in order to find
             the exact instances they are trying to find in the text. Users can
             create multiple rulesets to search for in the database. Each ruleset
-            is assigned a color to help display what ruleset triggered in
+            is assigned a color to help display what ruleset is triggered in
             specific areas of the text.
             <img
               src={`${process.env.PUBLIC_URL}/rules-page.png`}
@@ -79,9 +78,9 @@ class CitationGalaxy extends Component {
             ></img>
           </p>
           <p className="article-text" style={{ marginTop: "100px" }}>
-            The home page shows an overview of all the rulesets that triggered
-            in the texts, specifically where the rulesets occured in the text.
-            The texts are organized into columns based on the year the text was
+            The home page is a visualization that denotes the amount of rules that are triggered in that specific area of text. For example,
+            the visualization could denote that one of your rules triggers only in the first 15% of sentences in academic texts.
+            The texts are organized into columns based on the year the paper was
             published. By sorting the texts into their year of publication users
             can start to see how the rules change over time.
             <img

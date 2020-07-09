@@ -60,7 +60,6 @@ class LeadLag extends Component {
                 height: "auto",
                 float: "left",
                 margin: "20px",
-                marginLeft: "-80px",
               }}
             ></img>
             This allows the user to gauge areas of interest. The scrubber can be
@@ -77,11 +76,10 @@ class LeadLag extends Component {
                 height: "auto",
                 float: "right",
                 margin: "20px",
-                marginRight: "-180px",
               }}
             ></img>
             The event graphs inform the user which areas have the most lead,
-            most lag, most amount of lead and lag.
+            most lag, most amount of lead and lag, and the most countries participating.
           </p>
           <p className="article-text" style={{ marginTop: "100px" }}>
             Once a timespan is selected the user can now view individual
