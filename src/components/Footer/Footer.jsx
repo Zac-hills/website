@@ -50,7 +50,7 @@ class Footer extends Component {
     }
     return (
       <footer className="footer">
-        <div style={{ float: "left", width: "50%", height: "100%" }}>
+        <div style={{ display: "flex", width: "50%", height: "100%" }}>
           <button
             className="footer-button"
             onClick={function () {
@@ -93,23 +93,21 @@ class Footer extends Component {
           </button>
         </div>
         {arrow}
-        <div style={{ float: "left", width: "50%", height: "100%" }}>
+        <div style={{ display:"flex",justifyContent:"flex-end", width: "50%", height: "100%" }}>
           <a href="https://www.linkedin.com/in/zachary-hills-031333185/">
             <img
               className="icon"
               src={`${process.env.PUBLIC_URL}/linkedIn.png`}
-              width={635 * this.state.scale}
-              height={540 * this.state.scale}
-              style={{ float: "right" }}
+              width={29}
+              height={29}
             />
           </a>
           <a href="https://github.com/Zac-hills">
             <img
               className="icon"
               src={`${process.env.PUBLIC_URL}/github.png`}
-              width={512 * this.state.scale}
-              height={512 * this.state.scale}
-              style={{ float: "right" }}
+              width={29}
+              height={29}
             />
           </a>
         </div>
