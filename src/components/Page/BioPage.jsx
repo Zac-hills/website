@@ -42,7 +42,7 @@ class BioPage extends Component {
                   width: "100%",
                   padding: "5px",
                   textAlign: "left",
-                  fontSize: "1vw",
+                  fontSize: "1vmax",
                 }}
               >
                 I am a full stack developer working at the{" "}

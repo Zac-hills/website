@@ -71,13 +71,15 @@ class RenderWindow extends Component {
     //scene.background = new THREE.Color( 0x050505 );
 
     //
-
+    const scale = (width) => {
+      return Math.floor((34 * width) / 2160) + 6;
+    };
     let geometry = new THREE.TextGeometry(
       "Zachary Hills, \n Full Stack Developer",
       {
         font: font,
 
-        size: 40,
+        size: scale(WIDTH),
         height: 5,
         curveSegments: 3,
 
