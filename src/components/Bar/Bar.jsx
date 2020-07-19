@@ -23,7 +23,12 @@ class Bar extends Component {
   render() {
     return (
       <ProgressBar
-        style={{ margin: "10px", textAlign: "center", height: "30px" }}
+        style={{
+          margin: "10px",
+          textAlign: "center",
+          height: "2.3vmin",
+          fontSize: "2vmin",
+        }}
       >
         <ProgressBar variant="success" now={35} label={this.props.label} />
         <ProgressBar variant="warning" now={this.props.now - 45} />

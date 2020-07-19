@@ -31,13 +31,15 @@
 }
 
 .backgroundcard {
-  background-color: var(--foreground-color1);
   margin: auto;
   text-align: left;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  height: 600px;
+  height: 52vh;
   margin-bottom: 30px;
-  width: 900px;
+  width: 48vw;
+  min-width: 400px;
+  border-radius: 2em;
+  background: linear-gradient(145deg, #858383, #706e6e);
+  box-shadow: 20px 20px 60px #535252, -20px -20px 60px #a5a2a2;
 }
 
 .text {
@@ -50,18 +52,18 @@
 }
 
 .formfield {
-  background-color: #333333;
   color: white;
-  border-color: var(--foreground-color1);
   border-radius: 5px;
   width: 300px;
   margin: 10px;
+  background: #333333;
+  box-shadow: inset 8px 8px 17px #292929, inset -8px -8px 17px #3d3d3d;
 }
 
 .formsubmit {
-  background-color: #333333;
+  background: linear-gradient(145deg, #4e4e4e, #424242);
+  box-shadow: 8px 8px 17px #3a3a3a, -8px -8px 17px #585858;
   color: white;
-  border-color: var(--foreground-color1);
   border-radius: 5px;
   cursor: pointer;
   width: 64px;
@@ -83,11 +85,13 @@
 
 .bio-icon {
   max-width: 150px;
+  width: 9vw;
+  height: 9vw;
 }
 .bio-div {
-  margin: 80px;
-  margin-left: 120px;
-  margin-right: 120px;
+  margin: 6vh;
+  margin-left: 8vw;
+  margin-right: 8vw;
 }
 .banner {
   width: auto;
@@ -160,4 +164,15 @@
   to {
     opacity: 1;
   }
+}
+
+.profile-div {
+  width: 50%;
+  height: 100%;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  background: #ffffff;
+  border-top-left-radius: 2em;
+  border-bottom-left-radius: 2em;
 }

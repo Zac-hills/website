@@ -28,28 +28,23 @@ class BioPage extends Component {
           BIO
         </p>
         <div className="backgroundcard" style={this.getStyle()}>
-          <div
-            style={{
-              width: "50%",
-              height: "100%",
-              display: "inline-block",
-              verticalAlign: "top",
-              backgroundColor: "white",
-              textAlign: "center",
-              boxShadow:
-                "0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)",
-            }}
-          >
+          <div className="profile-div">
             <div
               style={{
-                height: "300px",
                 margin: "30px",
               }}
             >
               <ProfilePicture
                 src={process.env.PUBLIC_URL + "/profilePicture.jpg"}
               />
-              <p style={{ width: "100%", padding: "5px", textAlign: "left" }}>
+              <p
+                style={{
+                  width: "100%",
+                  padding: "5px",
+                  textAlign: "left",
+                  fontSize: "1vw",
+                }}
+              >
                 I am a full stack developer working at the{" "}
                 <a href="http://vialab.science.uoit.ca/">VIA Lab</a>. I have a
                 passion for technology solutions and a never ending drive to
@@ -62,7 +57,7 @@ class BioPage extends Component {
           <div
             style={{
               display: "inline-block",
-              width: "400px",
+              width: "50%",
               height: "100%",
             }}
           >

@@ -11,9 +11,8 @@ class ProfilePicture extends Component {
           style={{
             width: "55%",
             height: "auto",
-            borderRadius:"5px"
-            //objectFit: "none",
-            //objectPosition: "56% 20%",
+            borderRadius: "5px",
+            boxShadow: " 20px 20px 60px #c9c9c9, -20px -20px 60px #ffffff",
           }}
           src={this.props.src}
         ></img>

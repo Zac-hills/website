@@ -54,7 +54,14 @@ class Header extends Component {
     }
     return (
       <footer className="footer">
-        <div style={{ float: "left", width: "50%", height: "100%" }}>
+        <div
+          style={{
+            float: "left",
+            width: "50vw",
+            height: "100%",
+            paddingLeft: "2vw",
+          }}
+        >
           <button className="footer-button" onClick={this.onClick.bind(this)}>
             HOME
           </button>
@@ -63,7 +70,7 @@ class Header extends Component {
         <div
           style={{
             float: "left",
-            width: "50%",
+            width: "46vw",
             height: "100%",
           }}
         >
@@ -71,8 +78,6 @@ class Header extends Component {
             <img
               className="icon"
               src={`${process.env.PUBLIC_URL}/linkedIn.png`}
-              width={635 * this.state.scale}
-              height={540 * this.state.scale}
               style={{ float: "right" }}
             />
           </a>
@@ -80,8 +85,6 @@ class Header extends Component {
             <img
               className="icon"
               src={`${process.env.PUBLIC_URL}/github.png`}
-              width={512 * this.state.scale}
-              height={512 * this.state.scale}
               style={{ float: "right" }}
             />
           </a>
