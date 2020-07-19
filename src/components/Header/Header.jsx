@@ -69,23 +69,37 @@ class Header extends Component {
         {arrow}
         <div
           style={{
-            float: "left",
-            width: "46vw",
+            display: "flex",
+            justifyContent: "flex-end",
+            alignContent: "flex-end",
+            width: "47vw",
             height: "100%",
           }}
         >
-          <a href="https://www.linkedin.com/in/zachary-hills-031333185/">
+          <a
+            href="https://www.linkedin.com/in/zachary-hills-031333185/"
+            style={{
+              display: "flex",
+              alignItems: "flex-end",
+            }}
+          >
             <img
               className="icon"
               src={`${process.env.PUBLIC_URL}/linkedIn.png`}
-              style={{ float: "right" }}
+              style={{ marginRight: "1vw", paddingBottom: "15%" }}
             />
           </a>
-          <a href="https://github.com/Zac-hills">
+          <a
+            href="https://github.com/Zac-hills"
+            style={{
+              display: "flex",
+              alignItems: "flex-end",
+            }}
+          >
             <img
               className="icon"
               src={`${process.env.PUBLIC_URL}/github.png`}
-              style={{ float: "right" }}
+              style={{ marginRight: "2vw", paddingBottom: "15%" }}
             />
           </a>
         </div>

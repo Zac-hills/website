@@ -24,9 +24,9 @@ class Bar extends Component {
     return (
       <ProgressBar
         style={{
-          margin: "10px",
+          margin: "0.5vmin",
           textAlign: "center",
-          height: "2.3vmin",
+          height: "2vmin",
           fontSize: "2vmin",
         }}
       >

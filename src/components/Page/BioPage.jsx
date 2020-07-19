@@ -61,7 +61,7 @@ class BioPage extends Component {
               height: "100%",
             }}
           >
-            <div style={{ margin: "8%" }}>
+            <div className="skills-div">
               <label style={{ margin: "10px", color: "white" }}>Advanced</label>
               <Bar now={80} label={"C++"} />
               <Bar now={80} label={"C#"} />

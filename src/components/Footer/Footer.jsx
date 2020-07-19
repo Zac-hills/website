@@ -97,21 +97,35 @@ class Footer extends Component {
           style={{
             display: "flex",
             justifyContent: "flex-end",
+            alignContent: "flex-end",
             width: "47vw",
             height: "100%",
           }}
         >
-          <a href="https://www.linkedin.com/in/zachary-hills-031333185/">
+          <a
+            href="https://www.linkedin.com/in/zachary-hills-031333185/"
+            style={{
+              display: "flex",
+              alignItems: "flex-end",
+            }}
+          >
             <img
               className="icon"
               src={`${process.env.PUBLIC_URL}/linkedIn.png`}
+              style={{ marginRight: "2vw", paddingBottom: "15%" }}
             />
           </a>
-          <a href="https://github.com/Zac-hills">
+          <a
+            href="https://github.com/Zac-hills"
+            style={{
+              display: "flex",
+              alignItems: "flex-end",
+            }}
+          >
             <img
               className="icon"
               src={`${process.env.PUBLIC_URL}/github.png`}
-              style={{ marginRight: "2vw" }}
+              style={{ marginRight: "2vw", paddingBottom: "15%" }}
             />
           </a>
         </div>

@@ -28,11 +28,9 @@
 
 .icon {
   object-fit: contain;
-  margin: 10px;
-  margin-top: 53px;
   position: relative;
-  width: 1.5vmax;
-  height: 1.5vmax;
+  width: min(1.5vmax, 50px);
+  height: min(1.5vmax, 50px);
   border-radius: 50%;
 }
 
@@ -40,7 +38,7 @@
   color: var(--font-color);
   outline: 0;
   border: none;
-  font-size: 1.5rem;
+  font-size: min(1.5vw, 38px);
   margin: 0.4vw;
   margin-top: 53px;
   position: relative;
