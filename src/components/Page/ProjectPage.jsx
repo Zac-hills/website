@@ -53,6 +53,7 @@ class ProjectPage extends Component {
               imageName={process.env.PUBLIC_URL + "/leadlag.png"}
               text="A web application that determines Canada's academic standing in comparison to the rest of the world based on given keywords."
               url="/Projects/LeadLag"
+              objectFit="cover"
             />
             <ACard
               cardWidth={this.props.cardWidth}
@@ -62,6 +63,7 @@ class ProjectPage extends Component {
               imageName={process.env.PUBLIC_URL + "/visualmodel.PNG"}
               text="An application that evaluates the spatial limitations for Convolutional Neural Networks through the use of Unmanned Aerial Vehicles."
               url="/Projects/SpatialEval"
+              objectFit="contain"
             />
             <ACard
               cardWidth={this.props.cardWidth}
@@ -71,6 +73,7 @@ class ProjectPage extends Component {
               imageName={process.env.PUBLIC_URL + "/citation-galaxy.png"}
               text="A web based tool to aid in the pursuit of understanding how, where and when citations occur. Features text analysis tools and the ability to export data."
               url="/Projects/CitationGalaxy"
+              objectFit="cover"
             />
             <ACard
               cardWidth={this.props.cardWidth}
@@ -80,6 +83,7 @@ class ProjectPage extends Component {
               imageName={process.env.PUBLIC_URL + "/tied-in-knots.png"}
               text="Tied in Knots is a visualization tool to aid the exploration and understanding of sexual assaults in an academic environment. With the main objective of maintaining individual accounts."
               url="/Projects/TiedInKnots"
+              objectFit="cover"
             />
           </CardColumns>
         </div>

@@ -21,6 +21,19 @@ class BioPage extends Component {
       return {};
     }
   }
+  componentDidMount() {
+    let div = document.querySelector("#profile-text");
+    while (div.scrollHeight > div.clientHeight) {
+      let style = window
+        .getComputedStyle(div, null)
+        .getPropertyValue("font-size");
+      let fontSize = parseFloat(style);
+      if (fontSize <= 1) {
+        break;
+      }
+      div.style.fontSize = "" + (fontSize - 1) + "px";
+    }
+  }
   render() {
     return (
       <div id="bio">
@@ -31,19 +44,16 @@ class BioPage extends Component {
           <div className="profile-div">
             <div
               style={{
-                margin: "30px",
+                padding: "5%",
+                height: "90%",
               }}
             >
               <ProfilePicture
                 src={process.env.PUBLIC_URL + "/profilePicture.jpg"}
               />
-              <p
-                style={{
-                  width: "100%",
-                  padding: "5px",
-                  textAlign: "left",
-                  fontSize: "1vmax",
-                }}
+              <div
+                id="profile-text"
+                style={{ height: "40%", padding: "5%", textAlign: "left" }}
               >
                 I am a full stack developer working at the{" "}
                 <a href="http://vialab.science.uoit.ca/">VIA Lab</a>. I have a
@@ -51,7 +61,7 @@ class BioPage extends Component {
                 learn new things. I have experience in a wide array of subjects
                 such as machine learning, web development, database management,
                 robotics, and data visualizations.
-              </p>
+              </div>
             </div>
           </div>
           <div

@@ -6,11 +6,11 @@ class ProfilePicture extends Component {
   }
   render() {
     return (
-      <div>
+      <div style={{ height: "50%" }}>
         <img
           style={{
-            width: "55%",
-            height: "auto",
+            height: "100%",
+            objectFit: "scale-down",
             borderRadius: "5px",
             boxShadow: " 20px 20px 60px #c9c9c9, -20px -20px 60px #ffffff",
           }}

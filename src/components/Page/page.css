@@ -127,11 +127,11 @@
   border-right-width: 8px;
 }
 .skills-div {
-  margin-top: 1vh;
   margin-left: 8%;
   display: flex;
   flex-direction: column;
-  height: calc(100% - 2vh);
+  height: calc(100% - 8%);
+  padding: 4%;
 }
 .skills-div > * {
   flex: 1 1 auto;

@@ -26,7 +26,7 @@ class ACard extends React.Component {
           cursor: "pointer",
           flex: 0,
           margin: "15px",
-          borderRadius:"2rem",
+          borderRadius: "2rem",
         }}
         onClick={this.onClick.bind(this)}
       >
@@ -36,8 +36,10 @@ class ACard extends React.Component {
           style={{
             width: this.props.cardWidth,
             height: "50%",
-            borderTopLeftRadius:"2rem",
-            borderTopRightRadius:"2rem"
+            borderTopLeftRadius: "2rem",
+            borderTopRightRadius: "2rem",
+            objectFit: this.props.objectFit,
+            backgroundColor: "white",
           }}
         />
         <Card.Body>
